@@ -8,6 +8,11 @@
 
 namespace DtApp\WeChatMini;
 
+/**
+ * 用户相关
+ * Class User
+ * @package DtApp\WeChatMini
+ */
 class User extends Base
 {
     /**
@@ -26,6 +31,11 @@ class User extends Base
      */
     private $secret = '';
 
+    /**
+     * User constructor.
+     * @param string $appid
+     * @param string $secret
+     */
     public function __construct(string $appid, string $secret)
     {
         $this->appid = $appid;

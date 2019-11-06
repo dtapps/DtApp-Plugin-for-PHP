@@ -8,7 +8,11 @@
 
 namespace DtApp\WeChatMini;
 
-
+/**
+ * 授权相关
+ * Class Auth
+ * @package DtApp\WeChatMini
+ */
 class Auth extends Base
 {
     /**
@@ -27,7 +31,13 @@ class Auth extends Base
      */
     private $tokenFile = '';
 
-    public function __construct(string $appid, string $secret, string $tokenFile = '')
+    /**
+     * Auth constructor.
+     * @param string $appid
+     * @param string $secret
+     * @param string $tokenFile
+     */
+    public function __construct(string $appid = '', string $secret = '', string $tokenFile = '')
     {
         $this->appid = $appid;
         $this->secret = $secret;
@@ -56,7 +66,6 @@ class Auth extends Base
         return $get;
     }
 
-
     /**
      * 用户支付完成后，获取该用户的 UnionId，无需用户授权
      * https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/user-info/auth.getPaidUnionId.html
@@ -69,7 +78,7 @@ class Auth extends Base
      * @param string $transaction_id 微信支付订单号
      * @return bool|mixed
      */
-    public function getPaidUnionIdTI(string $openid, string $transaction_id)
+    public function getPaidUnionIdTI(string $openid = '', string $transaction_id = '')
     {
         $url = "https://api.weixin.qq.com/wxa/getpaidunionid?access_token=ACCESS_TOKEN&openid=$openid&transaction_id=$transaction_id";
         $get = $this->get_http($url);
@@ -90,7 +99,7 @@ class Auth extends Base
      * @param string $out_trade_no 微信支付商户号
      * @return bool|mixed
      */
-    public function getPaidUnionIdOM(string $openid, string $mch_id, string $out_trade_no)
+    public function getPaidUnionIdOM(string $openid = '', string $mch_id = '', string $out_trade_no = '')
     {
         $url = "https://api.weixin.qq.com/wxa/getpaidunionid?access_token=ACCESS_TOKEN&openid=$openid&mch_id=$mch_id&out_trade_no=$out_trade_no";
         $get = $this->get_http($url);
