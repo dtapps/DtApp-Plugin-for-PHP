@@ -8,13 +8,29 @@
 
 namespace DtApp\WeChatMini;
 
-class User extends Config
+class User extends Base
 {
     /**
      * 错误状态码
      * @var string
      */
     private $code = '';
+    /**
+     * 小程序AppId
+     * @var string|string
+     */
+    private $appid = '';
+    /**
+     * 小程序AppSecret
+     * @var string|string
+     */
+    private $secret = '';
+
+    public function __construct(string $appid, string $secret)
+    {
+        $this->appid = $appid;
+        $this->secret = $secret;
+    }
 
     /**
      * 检验数据的真实性，并且获取解密后的明文.
@@ -26,7 +42,7 @@ class User extends Config
      */
     public function getUserInfo(string $js_code, string $encryptedData, string $iv, &$data)
     {
-        $auth = new Auth();
+        $auth = new Auth($this->appid, $this->secret);
         $sessionKey = $auth->code2Session($js_code);
         if (strlen($sessionKey) != 24) $this->code = -41001;
         if (strlen($iv) != 24) $this->code = -41002;

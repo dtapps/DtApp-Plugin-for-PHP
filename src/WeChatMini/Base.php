@@ -9,23 +9,12 @@
 namespace DtApp\WeChatMini;
 
 /**
- * 微信小程序配置
+ * 微信小程序
  * Class Config
  * @package liguangchun\WeMini
  */
-class Config
+class Base
 {
-    protected $appid = '';
-    protected $secret = '';
-    protected $tokenFile = '';
-
-    public function __construct(array $config = [])
-    {
-        if (!empty($config['appid'])) $this->appid = $config['appid'];
-        if (!empty($config['secret'])) $this->secret = $config['secret'];
-        if (!empty($config['tokenfile'])) $this->tokenFile = $config['tokenfile'];
-    }
-
     protected function get_http($url, $data = null)
     {
         $curl = curl_init();

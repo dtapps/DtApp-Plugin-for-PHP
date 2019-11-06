@@ -9,8 +9,31 @@
 namespace DtApp\WeChatMini;
 
 
-class Auth extends Config
+class Auth extends Base
 {
+    /**
+     * 小程序AppId
+     * @var string|string
+     */
+    private $appid = '';
+    /**
+     * 小程序AppSecret
+     * @var string|string
+     */
+    private $secret = '';
+    /**
+     * token保存的地址
+     * @var string
+     */
+    private $tokenFile = '';
+
+    public function __construct(string $appid, string $secret, string $tokenFile = '')
+    {
+        $this->appid = $appid;
+        $this->secret = $secret;
+        $this->tokenFile = $tokenFile;
+    }
+
     /**
      * 登录凭证校验。通过 wx.login 接口获得临时登录凭证 code 后传到开发者服务器调用此接口完成登录流程
      * https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/login/auth.code2Session.html
