@@ -1,25 +1,28 @@
 {
-    "name": "liguangchun/dtapp",
-    "description": "DtApp Plugin for PHP",
-    "type": "library",
-    "license": "Apache-2.0",
-    "authors": [
-        {
-            "name": "李光春",
-            "email": "gc@dtapp.net",
-            "homepage": "https://api.dtapp.net"
-        }
-    ],
-    "homepage": "https://www.dtapp.net",
-    "require": {
-        "php": ">=7.0",
-        "ext-openssl": "*",
-        "ext-json": "*",
-        "ext-curl": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "DtApp\\WeChatMini\\": "src/WeChatMini"
-        }
+  "name": "liguangchun/dtapp",
+  "description": "DtApp Plugin for PHP",
+  "type": "library",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "李光春",
+      "email": "gc@dtapp.net",
+      "homepage": "https://api.dtapp.net"
     }
+  ],
+  "homepage": "https://www.dtapp.net",
+  "require": {
+    "php": ">=7.0",
+    "ext-openssl": "*",
+    "ext-json": "*",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "DtApp\\WeChatMini\\": "src/WeChatMini",
+      "DtApp\\Aes\\": "src/Aes",
+      "DtApp\\Tool\\": "src/Tool",
+      "DtApp\\Notice\\": "src/Notice"
+    }
+  }
 }
