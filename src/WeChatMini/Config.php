@@ -22,7 +22,7 @@ class Config
     public function __construct(array $config = [])
     {
         if (!empty($config['appid'])) $this->appid = $config['appid'];
-        if (!empty($config['appid'])) $this->secret = $config['appid'];
+        if (!empty($config['secret'])) $this->secret = $config['secret'];
         if (!empty($config['tokenfile'])) $this->tokenFile = $config['tokenfile'];
     }
 
