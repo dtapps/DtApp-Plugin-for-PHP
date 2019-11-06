@@ -33,15 +33,13 @@ class Auth extends Base
 
     /**
      * Auth constructor.
-     * @param string $appid
-     * @param string $secret
-     * @param string $tokenFile
+     * @param array $config
      */
-    public function __construct(string $appid = '', string $secret = '', string $tokenFile = '')
+    public function __construct(array $config = [])
     {
-        $this->appid = $appid;
-        $this->secret = $secret;
-        $this->tokenFile = $tokenFile;
+        if (!empty($config['appid'])) $this->appid = $config['appid'];
+        if (!empty($config['secret'])) $this->secret = $config['secret'];
+        if (!empty($config['tokenfile'])) $this->tokenFile = $config['tokenfile'];
     }
 
     /**

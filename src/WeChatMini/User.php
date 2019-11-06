@@ -33,13 +33,12 @@ class User extends Base
 
     /**
      * User constructor.
-     * @param string $appid
-     * @param string $secret
+     * @param array $config
      */
-    public function __construct(string $appid, string $secret)
+    public function __construct(array $config = [])
     {
-        $this->appid = $appid;
-        $this->secret = $secret;
+        if (!empty($config['appid'])) $this->appid = $config['appid'];
+        if (!empty($config['secret'])) $this->secret = $config['secret'];
     }
 
     /**
