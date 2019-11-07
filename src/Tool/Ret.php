@@ -24,7 +24,7 @@ class Ret
     public static function jsonSuccess(array $data = [], string $msg = 'success', int $code = 0)
     {
         header('Content-Type:application/json; charset=utf-8');
-        exit(json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]));
+        die(json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]));
     }
 
     /**
@@ -41,6 +41,6 @@ class Ret
     public static function jsonError(string $msg = 'error', int $code = 1, array $data = [])
     {
         header('Content-Type:application/json; charset=utf-8');
-        exit(json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]));
+        die(json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]));
     }
 }
