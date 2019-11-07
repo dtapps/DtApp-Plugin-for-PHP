@@ -59,6 +59,8 @@ class User extends Base
         $dataObj = json_decode($result);
         if ($dataObj == null) $this->code = -41003;
         if ($dataObj->watermark->appid != $this->appid) $this->code = -41003;
+        $result['openid'] = $sessionKey['openid'];
+        $result['unionid'] = $sessionKey['unionid'];
         $data = $result;
         return 0;
     }
