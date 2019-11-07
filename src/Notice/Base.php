@@ -16,6 +16,12 @@ namespace DtApp\Notice;
 class Base
 {
     /**
+     * sendcloud网址
+     * @var type
+     */
+    protected $sendcloud_url = 'https://api.sendcloud.net/apiv2/mail/sendtemplate';
+
+    /**
      * 发送数据
      * @param string $url 网址
      * @param array $data

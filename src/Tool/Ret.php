@@ -25,14 +25,9 @@ class Ret
     {
         header('Content-Type:application/json; charset=utf-8');
         echo json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]);
-        exit();
+        exit;
     }
 
-    /**
-     * 返回Json-错误
-     * @param string $msg 描述
-     * @param int $code 状态码
-     */
     /**
      * 返回Json-错误
      * @param string $msg 描述
@@ -43,6 +38,6 @@ class Ret
     {
         header('Content-Type:application/json; charset=utf-8');
         echo json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]);
-        exit();
+        exit;
     }
 }

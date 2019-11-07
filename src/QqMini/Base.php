@@ -1,17 +1,17 @@
 <?php
 /**
  * Created by : PhpStorm
- * Date: 2019/11/6
- * Time: 16:25
+ * Date: 2019/11/8
+ * Time: 0:28
  * User: 李光春 gc@dtapp.net
  */
 
-namespace DtApp\WeChatMini;
+namespace DtApp\QqMini;
 
 /**
- * 微信小程序
- * Class Config
- * @package liguangchun\WeMini
+ * QQ小程序
+ * Class Base
+ * @package DtApp\QqMini
  */
 class Base
 {

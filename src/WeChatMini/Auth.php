@@ -20,11 +20,13 @@ class Auth extends Base
      * @var string|string
      */
     private $appid = '';
+
     /**
      * 小程序AppSecret
      * @var string|string
      */
     private $secret = '';
+
     /**
      * token保存的地址
      * @var string
@@ -32,6 +34,7 @@ class Auth extends Base
     private $tokenFile = '';
 
     /**
+     * 配置小程序信息
      * Auth constructor.
      * @param array $config
      */

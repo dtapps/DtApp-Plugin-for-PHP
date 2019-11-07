@@ -20,6 +20,8 @@
   "autoload": {
     "psr-4": {
       "DtApp\\WeChatMini\\": "src/WeChatMini",
+      "DtApp\\QqMini\\": "src/QqMini",
+      "DtApp\\AliPayMini\\": "src/AliPayMini",
       "DtApp\\Aes\\": "src/Aes",
       "DtApp\\Tool\\": "src/Tool",
       "DtApp\\Notice\\": "src/Notice"

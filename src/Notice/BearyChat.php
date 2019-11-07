@@ -60,7 +60,6 @@ class BearyChat extends Base
         if ($result['code'] !== 0) return true;
         $this->error = $result['result'];
         return false;
-
     }
 
     /**

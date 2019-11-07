@@ -20,12 +20,19 @@ class MiniProgram
      * @var string
      */
     private $key = '';
+
     /**
      * 密钥
      * @var string
      */
     private $iv = '';
 
+    /**
+     * 配置加密解密信息
+     * MiniProgram constructor.
+     * @param string $key 密钥
+     * @param string $iv 密钥
+     */
     public function __construct(string $key = '', string $iv = '')
     {
         if (!empty($key)) $this->key = $key;

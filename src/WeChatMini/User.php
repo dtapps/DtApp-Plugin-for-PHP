@@ -20,11 +20,13 @@ class User extends Base
      * @var string
      */
     private $code = '';
+
     /**
      * 小程序AppId
      * @var string|string
      */
     private $appid = '';
+
     /**
      * 小程序AppSecret
      * @var string|string
@@ -32,6 +34,7 @@ class User extends Base
     private $secret = '';
 
     /**
+     * 配置小程序信息
      * User constructor.
      * @param array $config
      */

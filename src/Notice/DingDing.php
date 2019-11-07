@@ -80,7 +80,6 @@ class DingDing extends Base
         if ($result['errcode'] == 0) return true;
         $this->error = $result['errmsg'];
         return false;
-
     }
 
     /**

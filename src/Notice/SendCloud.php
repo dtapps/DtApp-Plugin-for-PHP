@@ -13,14 +13,8 @@ namespace DtApp\Notice;
  * Class SendCloud
  * @package DtApp\Notice
  */
-class SendCloud
+class SendCloud extends Base
 {
-    /**
-     * 邮箱
-     * @var string
-     */
-    protected $url = 'https://api.sendcloud.net/apiv2/mail/sendtemplate';
-
     /**
      * apiUser
      * @var string
@@ -127,7 +121,7 @@ class SendCloud
                 'content' => $data
             ));
         $context = stream_context_create($options);
-        $result = file_get_contents($this->url, false, $context);
+        $result = file_get_contents($this->sendcloud_url, false, $context);
         return $result;
     }
 }
