@@ -51,7 +51,10 @@ class User extends Base
      */
     public function getUserInfo(string $js_code, string $encryptedData, string $iv, &$data)
     {
-        $auth = new Auth($this->appid, $this->secret);
+        $auth = new Auth([
+            'appid' => $this->appid,
+            'secret' => $this->secret
+        ]);
         $sessionKey = $auth->code2Session($js_code);
         if (strlen($sessionKey) != 24) $this->code = -41001;
         if (strlen($iv) != 24) $this->code = -41002;
