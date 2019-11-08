@@ -64,7 +64,6 @@ class Req
 
     /**
      * 判断是否为PUT方式
-     *
      * @return boolean
      */
     public function isPut()
@@ -74,7 +73,6 @@ class Req
 
     /**
      * 判断是否为DELETE方式
-     *
      * @return boolean
      */
     public function isDelete()

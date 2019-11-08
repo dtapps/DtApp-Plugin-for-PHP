@@ -8,7 +8,11 @@
 
 namespace DtApp\AliPayMini;
 
-
+/**
+ * 支付宝小程序
+ * Class Auth
+ * @package DtApp\AliPayMini
+ */
 class Auth extends Base
 {
     /**

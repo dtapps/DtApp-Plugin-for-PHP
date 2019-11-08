@@ -33,6 +33,11 @@ class Auth extends Base
      */
     private $tokenFile;
 
+    /**
+     * 配置小程序信息
+     * Auth constructor.
+     * @param array $config
+     */
     public function __construct(array $config = [])
     {
         if (!empty($config['appid'])) $this->appid = $config['appid'];
@@ -66,11 +71,11 @@ class Auth extends Base
     /**
      * 接口调用凭证
      * https://q.qq.com/wiki/develop/miniprogram/server/open_port/port_use.html#getaccesstoken
-     * -1	系统繁忙，此时请开发者稍候再试
-     * 0	请求成功
-     * 40001	AppSecret 错误或者 AppSecret 不属于这个小程序，请开发者确认 AppSecret 的正确性
-     * 40002	请确保 grant_type 字段值为 client_credential
-     * 40013	不合法的 AppID，请开发者检查 AppID 的正确性，避免异常字符，注意大小写
+     * -1    系统繁忙，此时请开发者稍候再试
+     * 0    请求成功
+     * 40001    AppSecret 错误或者 AppSecret 不属于这个小程序，请开发者确认 AppSecret 的正确性
+     * 40002    请确保 grant_type 字段值为 client_credential
+     * 40013    不合法的 AppID，请开发者检查 AppID 的正确性，避免异常字符，注意大小写
      * @return bool
      */
     public function getAccessToken()
