@@ -1,6 +1,7 @@
 # dtapp
 
-功能聚合
+## 使用教程
+[文档链接](http://apidoc.dtapp.net/web/#/4 "文档链接")
 
 ## 安装
 
@@ -19,10 +20,3 @@ composer update liguangchun/dtapp
 ```text
 composer remove liguangchun/dtapp
 ```
-
-## 搜索
-
-```text
-composer search liguangchun/dtapp
-```
-

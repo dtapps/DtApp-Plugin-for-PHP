@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by : PhpStorm
  * Date: 2019/11/6
@@ -45,7 +46,7 @@ class Req
 
     /**
      * 判断是否为GET方式
-     * @return bool true 是 ； false 否
+     * @return bool
      */
     public static function isGet()
     {
@@ -54,10 +55,30 @@ class Req
 
     /**
      * 判断是否为POST方式
-     * @return bool true 是 ； false 否
+     * @return bool
      */
     public static function isPost()
     {
         return $_SERVER['REQUEST_METHOD'] == 'POST' ? true : false;
+    }
+
+    /**
+     * 判断是否为PUT方式
+     *
+     * @return boolean
+     */
+    public function isPut()
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'PUT' ? true : false;
+    }
+
+    /**
+     * 判断是否为DELETE方式
+     *
+     * @return boolean
+     */
+    public function isDelete()
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'DETELE' ? true : false;
     }
 }
