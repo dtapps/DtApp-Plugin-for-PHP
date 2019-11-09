@@ -65,6 +65,15 @@ class Auth extends Base
     /**
      * 换取授权访问令牌
      * https://docs.open.alipay.com/api_9/alipay.system.oauth.token/
+     * Array
+     * (
+     * [access_token] => 访问令牌。通过该令牌调用需要授权类接口 authbseBd4fbf781a00b43499d84747cfe324X20
+     * [alipay_user_id] => 20881072656705515503611382012020
+     * [expires_in] => 访问令牌的有效时间，单位是秒。 31536000
+     * [re_expires_in] => 刷新令牌的有效时间，单位是秒。  31536000
+     * [refresh_token] => 刷新令牌。通过该令牌可以刷新access_token authbseBb3941249aa37467698ece60996338X20
+     * [user_id] => 支付宝用户的唯一userId 2088212587578201
+     * )
      * @param $code 授权码，用户对应用授权后得到。
      * @return bool
      */
