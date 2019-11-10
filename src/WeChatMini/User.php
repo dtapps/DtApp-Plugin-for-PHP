@@ -16,12 +16,6 @@ namespace DtApp\WeChatMini;
 class User extends Base
 {
     /**
-     * 错误状态码
-     * @var string
-     */
-    private $code = '';
-
-    /**
      * 小程序AppId
      * @var string|string
      */
@@ -50,51 +44,25 @@ class User extends Base
      * @param string $js_code 登录的code
      * @param string $encryptedData 加密的用户数据
      * @param string $iv 与用户数据一同返回的初始向量
-     * @param $data  解密后的原文
-     * @return int 成功0，失败返回对应的错误码
+     * @return bool|false|mixed|string
      */
-    public function getUserInfo(string $js_code, string $encryptedData, string $iv, &$data)
+    public function getUserInfo(string $js_code, string $encryptedData, string $iv)
     {
         $auth = new Auth([
             'appid' => $this->appid,
             'secret' => $this->secret
         ]);
         $session = $auth->code2Session($js_code);
-        if (strlen($session['session_key']) != 24) return $this->code = -41001;
-        if (strlen($iv) != 24) return $this->code = -41002;
+        if (strlen($session['session_key']) != 24) return false;
+        if (strlen($iv) != 24) return false;
         $result = openssl_decrypt(base64_decode($encryptedData), "AES-128-CBC", base64_decode($session['session_key']), 1, base64_decode($iv));
         $dataObj = json_decode($result);
-        if ($dataObj == null) return $this->code = -41003;
-        if ($dataObj->watermark->appid != $this->appid) return $this->code = -41003;
+        if ($dataObj == null) return false;
+        if ($dataObj->watermark->appid != $this->appid) return false;
         $result = json_decode($result, true);
         unset($result['openId'], $result['watermark']);
         $result['openid'] = $session['openid'];
         $result['unionid'] = $session['unionid'];
-        $data = $result;
-        return 0;
-    }
-
-    /**
-     * 获取错误信息
-     * @return array
-     */
-    public function getError()
-    {
-        return ['code' => $this->code, 'msg' => $this->error($this->code)];
-    }
-
-    /**
-     * 错误码描述
-     * @param $code
-     * @return mixed
-     */
-    private function error($code)
-    {
-        try {
-            $data[0] = 'ok';
-            return $data[$code];
-        } catch (\Exception $e) {
-            return '未定义';
-        }
+        return $result;
     }
 }

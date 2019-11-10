@@ -68,7 +68,6 @@ class Base
                 $buff .= $k . "=" . $v . "&";
             }
         }
-
         $buff = trim($buff, "&");
         return $buff;
     }
