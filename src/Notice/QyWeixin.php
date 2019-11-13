@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by : PhpStorm
  * Date: 2019/11/6
@@ -62,6 +63,22 @@ class QyWeixin extends Base
         $this->msgType = 'text';
         return $this->sendMsg([
             'text' => [
+                'content' => $content,
+            ],
+        ]);
+    }
+
+    /**
+     * 发送markdown消息
+     *
+     * @param string $content 消息内容
+     * @return bool    发送结果
+     */
+    public function markdown(string $content = '')
+    {
+        $this->msgType = 'markdown';
+        return $this->sendMsg([
+            'markdown' => [
                 'content' => $content,
             ],
         ]);

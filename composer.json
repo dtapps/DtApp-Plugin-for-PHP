@@ -22,6 +22,7 @@
       "DtApp\\WeChatMini\\": "src/WeChatMini",
       "DtApp\\QqMini\\": "src/QqMini",
       "DtApp\\AliPayMini\\": "src/AliPayMini",
+      "DtApp\\WeChat\\": "src/WeChat",
       "DtApp\\Aes\\": "src/Aes",
       "DtApp\\Tool\\": "src/Tool",
       "DtApp\\Notice\\": "src/Notice"
