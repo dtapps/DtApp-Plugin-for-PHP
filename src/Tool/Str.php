@@ -20,7 +20,7 @@ class Str
      */
     public static function strExtractBefore(string $str, int $start_num, int $end_num)
     {
-        if (strlen($str) < $start_num + $end_num) return false;
+        if (strlen($str) < $start_num + $end_num) return $str;
         return substr($str, $start_num, $end_num);
     }
 
@@ -32,7 +32,7 @@ class Str
      */
     public static function strExtractRear(string $str, int $num)
     {
-        if (strlen($str) <= $num) return false;
+        if (strlen($str) <= $num) return $str;
         return substr($str, -$num);
     }
 }
