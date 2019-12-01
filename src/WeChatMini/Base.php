@@ -1,12 +1,12 @@
 <?php
 /**
- * Created by : PhpStorm
- * Date: 2019/11/6
- * Time: 16:25
- * User: 李光春 gc@dtapp.net
+ * PHP常用函数
+ * (c) Chaim <gc@dtapp.net>
  */
 
 namespace DtApp\WeChatMini;
+
+use DtApp\Tool\Tool;
 
 /**
  * 微信小程序
@@ -15,26 +15,28 @@ namespace DtApp\WeChatMini;
  */
 class Base
 {
+    protected $tool;
+
     /**
-     * Get请求
-     * @param $url
-     * @param null $data
-     * @return mixed
+     * 登录凭证校验
+     * @var string
      */
-    protected function get_http($url, $data = null)
+    protected $jscode2session_url = 'https://api.weixin.qq.com/sns/jscode2session';
+
+    /**
+     * 用户支付完成后，获取该用户的 UnionId，无需用户授权
+     * @var string
+     */
+    protected $getpaidunionid_url = 'https://api.weixin.qq.com/wxa/getpaidunionid';
+
+    /**
+     * 获取小程序全局唯一后台接口调用凭据
+     * @var string
+     */
+    protected $token_url = 'https://api.weixin.qq.com/cgi-bin/token';
+
+    public function __construct()
     {
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        if (!empty($data)) {
-            curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        }
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        $output = curl_exec($curl);
-        curl_close($curl);
-        return json_decode($output, true);
+        $this->tool = new Tool();
     }
 }

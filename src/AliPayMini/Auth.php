@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by : PhpStorm
- * Date: 2019/11/8
- * Time: 0:45
- * User: 李光春 gc@dtapp.net
+ * PHP常用函数
+ * (c) Chaim <gc@dtapp.net>
  */
 
 namespace DtApp\AliPayMini;
@@ -13,19 +11,19 @@ namespace DtApp\AliPayMini;
  * Class Auth
  * @package DtApp\AliPayMini
  */
-class Auth extends Base
+class Auth extends Client
 {
     /**
      * 小程序AppId
      * @var string|string
      */
-    private $appid;
+    private $appId;
 
     /**
      * 小程序AppSecret
      * @var string|string
      */
-    private $secret;
+    private $appSecret;
 
     /**
      * 仅支持JSON
@@ -58,8 +56,9 @@ class Auth extends Base
      */
     public function __construct(array $config = [])
     {
-        if (!empty($config['appid'])) $this->appid = $config['appid'];
-        if (!empty($config['secret'])) $this->secret = $config['secret'];
+        if (!empty($config['appId'])) $this->appId = $config['appId'];
+        if (!empty($config['appSecret'])) $this->appSecret = $config['appSecret'];
+        parent::__construct($config);
     }
 
     /**
@@ -74,13 +73,13 @@ class Auth extends Base
      * [refresh_token] => 刷新令牌。通过该令牌可以刷新access_token authbseBb3941249aa37467698ece60996338X20
      * [user_id] => 支付宝用户的唯一userId 2088212587578201
      * )
-     * @param $code 授权码，用户对应用授权后得到。
+     * @param $code
      * @return bool
      */
-    public function token($code)
+    protected function token($code)
     {
         $timestamp = date("Y-m-d H:i:s");
-        $params['app_id'] = $this->appid;
+        $params['app_id'] = $this->appId;
         $params['method'] = 'alipay.system.oauth.token';
         $params['format'] = $this->format;
         $params['charset'] = $this->post_charset;
@@ -91,10 +90,10 @@ class Auth extends Base
         $params['code'] = $code;
         ksort($params); //对将要签名的数组排序
         $string = $this->toUrlParam($params);// 将数组转换成字符串
-        $params['sign'] = $this->sign($string, $this->secret); //将字符串签名
+        $params['sign'] = $this->sign($string, $this->appSecret); //将字符串签名
         $params = http_build_query($params);
-        $get_url = "https://openapi.alipay.com/gateway.do?$params";
-        $http_get = $this->get_http($get_url);
+        $get_url = "$this->gateway_url?$params";
+        $http_get = $this->tool->reqGetHttp($get_url, '', true);
         if (isset($http_get['alipay_system_oauth_token_response'])) return $http_get['alipay_system_oauth_token_response'];
         return false;
     }

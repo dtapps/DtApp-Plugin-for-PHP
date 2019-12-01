@@ -1,6 +1,7 @@
 {
   "name": "liguangchun/dtapp",
-  "description": "DtApp Plugin for PHP",
+  "description": "PHP常用函数组件",
+  "keywords": ["wechat","miniapp","wechat app"],
   "type": "library",
   "license": "Apache-2.0",
   "authors": [
@@ -27,7 +28,7 @@
       "DtApp\\Aes\\": "src/Aes",
       "DtApp\\Tool\\": "src/Tool",
       "DtApp\\Notice\\": "src/Notice",
-      "DtApp\\DataBase\\": "src/MyRedis"
+      "DtApp\\DataBase\\": "src/DataBase"
     }
   }
 }

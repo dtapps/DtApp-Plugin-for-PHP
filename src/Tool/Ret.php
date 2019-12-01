@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by : PhpStorm
- * Date: 2019/11/6
- * Time: 22:36
- * User: 李光春 gc@dtapp.net
+ * PHP常用函数
+ * (c) Chaim <gc@dtapp.net>
  */
 
 namespace DtApp\Tool;
@@ -13,7 +11,7 @@ namespace DtApp\Tool;
  * Class Ret
  * @package DtApp\Tool
  */
-class Ret
+class Ret extends Base
 {
     /**
      * 返回Json-成功
@@ -21,7 +19,7 @@ class Ret
      * @param string $msg 描述
      * @param int $code 状态
      */
-    public static function jsonSuccess(array $data = [], string $msg = 'success', int $code = 0)
+    protected function jsonSuccess(array $data, string $msg, int $code)
     {
         header('Content-Type:application/json; charset=utf-8');
         echo json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]);
@@ -34,7 +32,7 @@ class Ret
      * @param int $code 状态码
      * @param array $data 数据
      */
-    public static function jsonError(string $msg = 'error', int $code = 1, array $data = [])
+    protected function jsonError(string $msg, int $code, array $data)
     {
         header('Content-Type:application/json; charset=utf-8');
         echo json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]);

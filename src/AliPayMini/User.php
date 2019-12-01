@@ -1,27 +1,24 @@
 <?php
 /**
- * Created by : PhpStorm
- * Date: 2019/11/8
- * Time: 0:52
- * User: 李光春 gc@dtapp.net
+ * PHP常用函数
+ * (c) Chaim <gc@dtapp.net>
  */
 
 namespace DtApp\AliPayMini;
 
-
-class User extends Base
+class User extends Client
 {
     /**
      * 小程序AppId
      * @var string|string
      */
-    private $appid;
+    private $appId;
 
     /**
      * 小程序AppSecret
      * @var string|string
      */
-    private $secret;
+    private $appSecret;
 
     /**
      * 仅支持JSON
@@ -54,8 +51,9 @@ class User extends Base
      */
     public function __construct(array $config = [])
     {
-        if (!empty($config['appid'])) $this->appid = $config['appid'];
-        if (!empty($config['secret'])) $this->secret = $config['secret'];
+        if (!empty($config['appId'])) $this->appId = $config['appId'];
+        if (!empty($config['appSecret'])) $this->appSecret = $config['appSecret'];
+        parent::__construct($config);
     }
 
     /**
@@ -76,20 +74,15 @@ class User extends Base
      * [user_status] => 用户状态（Q/T/B/W）。    Q代表快速注册用户    T代表正常用户    B代表被冻结账户    W代表已注册，未激活的账户 T
      * [user_type] => 用户类型（1/2）    1代表公司账户2代表个人账户 2
      * )
-     * @param $code
+     * @param $auth_data
      * @return bool
      */
-    public function getUserInfo($code)
+    protected function userInfo($auth_data)
     {
-        $auth = new Auth([
-            'appid' => $this->appid,
-            'secret' => $this->secret,
-        ]);
-        $auth_data = $auth->token($code);
         if (empty($auth_data)) return false;
         $auth_token = $auth_data['access_token'];
         $timestamp = date("Y-m-d H:i:s");
-        $params['app_id'] = $this->appid;
+        $params['app_id'] = $this->appId;
         $params['method'] = 'alipay.user.info.share';
         $params['format'] = $this->format;
         $params['charset'] = $this->post_charset;
@@ -99,10 +92,10 @@ class User extends Base
         $params['auth_token'] = $auth_token;
         ksort($params); //对将要签名的数组排序
         $string = $this->toUrlParam($params);// 将数组转换成字符串
-        $params['sign'] = $this->sign($string, $this->secret); //将字符串签名
+        $params['sign'] = $this->sign($string, $this->appSecret); //将字符串签名
         $params = http_build_query($params);
-        $get_url = "https://openapi.alipay.com/gateway.do?$params";
-        $http_get = $this->get_http($get_url);
+        $get_url = "$this->gateway_url?$params";
+        $http_get = $this->tool->reqGetHttp($get_url, '', true);;
         if (isset($http_get['alipay_user_info_share_response'])) return $http_get['alipay_user_info_share_response'];
         return false;
     }

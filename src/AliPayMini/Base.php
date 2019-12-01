@@ -1,12 +1,12 @@
 <?php
 /**
- * Created by : PhpStorm
- * Date: 2019/11/8
- * Time: 0:44
- * User: 李光春 gc@dtapp.net
+ * PHP常用函数
+ * (c) Chaim <gc@dtapp.net>
  */
 
 namespace DtApp\AliPayMini;
+
+use DtApp\Tool\Tool;
 
 /**
  * 支付宝小程序
@@ -15,27 +15,13 @@ namespace DtApp\AliPayMini;
  */
 class Base
 {
-    /**
-     * Get请求
-     * @param $url
-     * @param null $data
-     * @return mixed
-     */
-    protected function get_http($url, $data = null)
+    protected $tool;
+
+    protected $gateway_url = 'https://openapi.alipay.com/gateway.do';
+
+    public function __construct()
     {
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        if (!empty($data)) {
-            curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        }
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        $output = curl_exec($curl);
-        curl_close($curl);
-        return json_decode($output, true);
+        $this->tool = new Tool();
     }
 
     /**

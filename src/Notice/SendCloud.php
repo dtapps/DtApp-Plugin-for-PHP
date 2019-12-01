@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by : PhpStorm
- * Date: 2019/11/6
- * Time: 22:38
- * User: 李光春 gc@dtapp.net
+ * PHP常用函数
+ * (c) Chaim <gc@dtapp.net>
  */
 
 namespace DtApp\Notice;
@@ -13,43 +11,37 @@ namespace DtApp\Notice;
  * Class SendCloud
  * @package DtApp\Notice
  */
-class SendCloud extends Base
+class SendCloud extends Client
 {
     /**
      * apiUser
      * @var string
      */
-    protected $api_user = '';
+    private $api_user = '';
 
     /**
      * apiKey
      * @var string
      */
-    protected $api_key = '';
+    private $api_key = '';
 
     /**
      * 发件人地址
      * @var string
      */
-    protected $from = '';
+    private $from = '';
 
     /**
      * 发件人名称
      * @var string
      */
-    protected $from_name = '';
+    private $from_name = '';
 
     /**
      * 邮件模板调用名称
      * @var string
      */
-    protected $template = '';
-
-    /**
-     * 错误信息
-     * @var string
-     */
-    protected $error = '';
+    private $template = '';
 
     /**
      * 设置配置
@@ -63,9 +55,11 @@ class SendCloud extends Base
         if (!empty($config['from'])) $this->from = $config['from'];
         if (!empty($config['from_name'])) $this->from_name = $config['from_name'];
         if (!empty($config['template'])) $this->template = $config['template'];
+        parent::__construct($config);
     }
 
     /**
+     * 发送邮箱
      * @param string $email 收件人地址
      * @param string $title 邮箱标题
      * @param string $desc 邮箱描述
@@ -76,18 +70,7 @@ class SendCloud extends Base
     {
         $result = json_decode($this->send_mail($email, $title, $content, $desc), true);
         if ($result['result'] == true) return true;
-        $this->error = $result['message'];
-        $this->error = $result['statusCode'];
         return false;
-    }
-
-    /**
-     * 获取错误信息
-     * @return mixed
-     */
-    public function getError()
-    {
-        return $this->error;
     }
 
     /**
