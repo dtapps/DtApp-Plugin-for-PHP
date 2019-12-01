@@ -35,4 +35,15 @@ class Str
         if (strlen($str) <= $num) return $str;
         return substr($str, -$num);
     }
+
+    /**
+     * 判断是否为偶数
+     * @param int $num
+     * @return bool
+     */
+    public static function strIsEven(int $num)
+    {
+        if ($num % 2 == 0) return true;
+        return false;
+    }
 }
