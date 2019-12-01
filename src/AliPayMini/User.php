@@ -6,6 +6,11 @@
 
 namespace DtApp\AliPayMini;
 
+/**
+ * 用户
+ * Class User
+ * @package DtApp\AliPayMini
+ */
 class User extends Base
 {
     /**

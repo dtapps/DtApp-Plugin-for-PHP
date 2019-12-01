@@ -15,6 +15,10 @@ use DtApp\Tool\Tool;
  */
 class Base extends Client
 {
+    /**
+     * 工具
+     * @var Tool
+     */
     protected $tool;
 
     /**
@@ -29,6 +33,10 @@ class Base extends Client
      */
     protected $getToken_url = 'https://api.q.qq.com/api/getToken';
 
+    /**
+     * 配置
+     * Base constructor.
+     */
     public function __construct()
     {
         $this->tool = new Tool();

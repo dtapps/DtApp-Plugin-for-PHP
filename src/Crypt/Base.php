@@ -1,6 +1,6 @@
 <?php
 /**
- * Name:LiGuAngChun
+ * PHP常用函数
  * (c) Chaim <gc@dtapp.net>
  */
 

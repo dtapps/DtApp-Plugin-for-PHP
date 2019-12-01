@@ -9,16 +9,28 @@ namespace DtApp\AliPayMini;
 use DtApp\Tool\Tool;
 
 /**
- * 支付宝小程序
+ * 中间件
  * Class Base
  * @package DtApp\AliPayMini
  */
 class Base extends Client
 {
+    /**
+     * 工具
+     * @var Tool
+     */
     protected $tool;
 
+    /**
+     * 接口网址
+     * @var string
+     */
     protected $gateway_url = 'https://openapi.alipay.com/gateway.do';
 
+    /**
+     * 配置
+     * Base constructor.
+     */
     public function __construct()
     {
         $this->tool = new Tool();

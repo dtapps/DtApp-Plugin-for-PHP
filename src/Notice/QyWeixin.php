@@ -8,7 +8,7 @@ namespace DtApp\Notice;
 
 /**
  * 企业微信
- * Class QyWeixin
+ * Class QyWeiXin
  * @package DtApp\Notice
  */
 class QyWeiXin extends Base
@@ -27,7 +27,7 @@ class QyWeiXin extends Base
 
     /**
      * 设置配置
-     * QyWeixin constructor.
+     * QyWeiXin constructor.
      * @param array $config 配置信息数组
      */
     public function __construct(array $config = [])

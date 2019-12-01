@@ -6,6 +6,11 @@
 
 namespace DtApp\QqMini;
 
+/**
+ * 用户
+ * Class User
+ * @package DtApp\QqMini
+ */
 class User extends Base
 {
     /**

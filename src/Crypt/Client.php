@@ -1,6 +1,6 @@
 <?php
 /**
- * Name:LiGuAngChun
+ * PHP常用函数
  * (c) Chaim <gc@dtapp.net>
  */
 
@@ -25,10 +25,35 @@ class Client
      */
     private $iv = '';
 
+    /**
+     * 配置
+     * Client constructor.
+     * @param array $config
+     */
     public function __construct(array $config = [])
     {
         if (!empty($config['key'])) $this->key = $config['key'];
         if (!empty($config['iv'])) $this->iv = $config['iv'];
+    }
+
+    /**
+     * Aes加密
+     * @param $data
+     * @return string
+     */
+    public function aesEncrypt($data)
+    {
+        return (new Aes($this->key, $this->iv))->encrypt($data);
+    }
+
+    /**
+     * Aes解密
+     * @param string $data
+     * @return string
+     */
+    public function aesDecrypt(string $data)
+    {
+        return (new Aes($this->key, $this->iv))->decrypt($data);
     }
 
     /**

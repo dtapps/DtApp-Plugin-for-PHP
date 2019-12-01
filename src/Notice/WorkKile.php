@@ -21,7 +21,7 @@ class WorkKile extends Base
 
     /**
      * 设置配置
-     * Worktile constructor.
+     * WorkKile constructor.
      * @param array $config 配置信息数组
      */
     public function __construct(array $config = [])

@@ -270,7 +270,6 @@ class Tool
         return (new Preg())->isIphone($mobile);
     }
 
-
     /**
      * 严谨验证手机号码
      * @param int $mobile 手机号码
@@ -280,7 +279,6 @@ class Tool
     {
         return (new Preg())->isIphoneAll($mobile);
     }
-
 
     /**
      * 验证电话号码
@@ -303,7 +301,6 @@ class Tool
         return (new Preg())->isIdCard($id);
     }
 
-
     /**
      * 验证是否是数字(这里小数点会认为是字符)
      * @param $digit
@@ -313,7 +310,6 @@ class Tool
     {
         return (new Preg())->isDigit($digit);
     }
-
 
     /**
      * 验证是否是数字(可带小数点的数字)
@@ -325,7 +321,6 @@ class Tool
         return (new Preg())->isNum($num);
     }
 
-
     /**
      * 验证由数字、26个英文字母或者下划线组成的字符串
      * @param $str
@@ -335,7 +330,6 @@ class Tool
     {
         return (new Preg())->isStr($str);
     }
-
 
     /**
      * 验证用户密码(以字母开头，长度在6-18之间，只能包含字符、数字和下划线)
@@ -347,7 +341,6 @@ class Tool
         return (new Preg())->isPassword($str);
     }
 
-
     /**
      * 验证汉字
      * @param $str
@@ -357,7 +350,6 @@ class Tool
     {
         return (new Preg())->isChinese($str);
     }
-
 
     /**
      * 验证Email地址

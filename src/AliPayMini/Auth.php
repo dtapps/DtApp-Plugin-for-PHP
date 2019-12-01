@@ -7,7 +7,7 @@
 namespace DtApp\AliPayMini;
 
 /**
- * 支付宝小程序
+ * 授权
  * Class Auth
  * @package DtApp\AliPayMini
  */

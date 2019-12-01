@@ -9,7 +9,7 @@ namespace DtApp\WeChat;
 use DtApp\Tool\Tool;
 
 /**
- * 中间
+ * 中间件
  * Class Base
  * @package DtApp\WeChat
  */

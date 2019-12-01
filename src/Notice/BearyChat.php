@@ -8,7 +8,7 @@ namespace DtApp\Notice;
 
 /**
  * 倍洽机器人
- * Class BearyChat
+ * Class BeAryChat
  * @package DtApp\Notice
  */
 class BeAryChat extends Base
@@ -21,7 +21,7 @@ class BeAryChat extends Base
 
     /**
      * 设置配置
-     * BearyChat constructor.
+     * BeAryChat constructor.
      * @param array $config 配置信息数组
      */
     public function __construct(array $config = [])

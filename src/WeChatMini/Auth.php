@@ -13,10 +13,29 @@ namespace DtApp\WeChatMini;
  */
 class Auth extends Base
 {
+    /**
+     * 小程序ID
+     * @var mixed|string
+     */
     private $appId = '';
+
+    /**
+     * 小程序密钥
+     * @var mixed|string
+     */
     private $appSecret = '';
+
+    /**
+     * 小程序token地址
+     * @var mixed|string
+     */
     private $tokenFile = '';
 
+    /**
+     * 配置
+     * Auth constructor.
+     * @param array $config
+     */
     public function __construct(array $config = [])
     {
         if (!empty($config['appId'])) $this->appId = $config['appId'];

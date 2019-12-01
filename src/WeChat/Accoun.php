@@ -8,10 +8,10 @@ namespace DtApp\WeChat;
 
 /**
  * https://developers.weixin.qq.com/doc/offiaccount/Account_Management/Generating_a_Parametric_QR_Code.html
- * Class Accoun
+ * Class AccOun
  * @package DtApp\WeChat
  */
-class Accoun extends Base
+class AccOun extends Base
 {
     /**
      * 将一条长链接转成短链接

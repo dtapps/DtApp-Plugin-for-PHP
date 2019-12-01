@@ -9,7 +9,7 @@ namespace DtApp\WeChatMini;
 use DtApp\Tool\Tool;
 
 /**
- * 微信小程序
+ * 中间件
  * Class Config
  * @package liguangchun\WeMini
  */

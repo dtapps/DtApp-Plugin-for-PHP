@@ -7,11 +7,11 @@
 namespace DtApp\Crypt;
 
 /**
- * 小程序加密解密
- * Class MiniProgram
- * @package DtApp\Aes
+ * Aes
+ * Class Aes
+ * @package DtApp\Crypt
  */
-class MiniProgram extends Base
+class Aes extends Base
 {
     /**
      * 密钥

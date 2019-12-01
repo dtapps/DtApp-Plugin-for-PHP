@@ -6,6 +6,11 @@
 
 namespace DtApp\Notice;
 
+/**
+ * 通知模块
+ * Class Client
+ * @package DtApp\Notice
+ */
 class Client
 {
     /**
@@ -44,7 +49,11 @@ class Client
      */
     private $template = '';
 
-
+    /**
+     * 配置
+     * Client constructor.
+     * @param array $config
+     */
     public function __construct(array $config = [])
     {
         if (!empty($config['webhook'])) $this->webhook = $config['webhook'];
@@ -55,6 +64,11 @@ class Client
         if (!empty($config['template'])) $this->template = $config['template'];
     }
 
+    /**
+     * 发送钉钉信息
+     * @param string $content
+     * @return bool
+     */
     public function dingDingText(string $content = '')
     {
         return (new DingDing([
@@ -62,6 +76,12 @@ class Client
         ]))->text($content);
     }
 
+    /**
+     * 发送WorkKile信息
+     * @param string $user
+     * @param string $content
+     * @return bool
+     */
     public function workKileText(string $user, string $content = '')
     {
         return (new WorkKile([
@@ -69,6 +89,11 @@ class Client
         ]))->text($user, $content);
     }
 
+    /**
+     * 发送企业微信信息
+     * @param string $content
+     * @return bool
+     */
     public function qyWxText(string $content = '')
     {
         return (new QyWeiXin([
@@ -76,6 +101,11 @@ class Client
         ]))->text($content);
     }
 
+    /**
+     * 发送企业微信markdown信息
+     * @param string $content
+     * @return bool
+     */
     public function qyWxMarkdown(string $content = '')
     {
         return (new QyWeiXin([
@@ -83,6 +113,11 @@ class Client
         ]))->markdown($content);
     }
 
+    /**
+     * 发送倍洽信息
+     * @param string $content
+     * @return bool
+     */
     public function beAryChatText(string $content = '')
     {
         return (new BeAryChat([
@@ -90,6 +125,14 @@ class Client
         ]))->text($content);
     }
 
+    /**
+     * 发送邮箱信息
+     * @param string $email
+     * @param string $title
+     * @param string $desc
+     * @param array $content
+     * @return bool
+     */
     public function sendCloudSend(string $email, string $title, string $desc, array $content)
     {
         return (new SendCloud([
