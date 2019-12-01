@@ -11,7 +11,7 @@ namespace DtApp\Notice;
  * Class QyWeixin
  * @package DtApp\Notice
  */
-class QyWeixin extends Client
+class QyWeiXin extends Base
 {
     /**
      * 企业微信自定义机器人接口链接

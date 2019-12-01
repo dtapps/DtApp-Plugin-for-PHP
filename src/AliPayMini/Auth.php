@@ -11,7 +11,7 @@ namespace DtApp\AliPayMini;
  * Class Auth
  * @package DtApp\AliPayMini
  */
-class Auth extends Client
+class Auth extends Base
 {
     /**
      * 小程序AppId

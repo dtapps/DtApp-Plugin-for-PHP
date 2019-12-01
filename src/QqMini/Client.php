@@ -6,7 +6,7 @@
 
 namespace DtApp\QqMini;
 
-class Client extends Base
+class Client
 {
     private $appId = '';
 

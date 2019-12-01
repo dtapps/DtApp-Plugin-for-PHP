@@ -1,7 +1,14 @@
 {
   "name": "liguangchun/dtapp",
   "description": "PHP常用函数组件",
-  "keywords": ["wechat","miniapp","wechat app"],
+  "keywords": [
+    "wechat",
+    "miniapp",
+    "wechat app",
+    "qq app",
+    "alipay app",
+    "dingding"
+  ],
   "type": "library",
   "license": "Apache-2.0",
   "authors": [
@@ -21,13 +28,13 @@
   },
   "autoload": {
     "psr-4": {
+      "DtApp\\Tool\\": "src/Tool",
+      "DtApp\\Crypt\\": "src/Crypt",
+      "DtApp\\Notice\\": "src/Notice",
       "DtApp\\WeChatMini\\": "src/WeChatMini",
       "DtApp\\QqMini\\": "src/QqMini",
       "DtApp\\AliPayMini\\": "src/AliPayMini",
       "DtApp\\WeChat\\": "src/WeChat",
-      "DtApp\\Aes\\": "src/Aes",
-      "DtApp\\Tool\\": "src/Tool",
-      "DtApp\\Notice\\": "src/Notice",
       "DtApp\\DataBase\\": "src/DataBase"
     }
   }

@@ -11,7 +11,7 @@ namespace DtApp\Notice;
  * Class DingDing
  * @package DtApp\Notice
  */
-class DingDing extends Client
+class DingDing extends Base
 {
     /**
      * 钉钉自定义机器人接口链接

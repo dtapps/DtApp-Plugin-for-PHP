@@ -12,7 +12,7 @@ namespace DtApp\WeChat;
  * Class Auth
  * @package DtApp\WeChat
  */
-class WebApps extends Client
+class WebApps extends Base
 {
     /**
      * 公众号ID

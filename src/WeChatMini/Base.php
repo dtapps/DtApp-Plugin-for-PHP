@@ -13,7 +13,7 @@ use DtApp\Tool\Tool;
  * Class Config
  * @package liguangchun\WeMini
  */
-class Base
+class Base extends Client
 {
     protected $tool;
 

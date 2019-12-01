@@ -13,7 +13,7 @@ use DtApp\Tool\Tool;
  * Class Base
  * @package DtApp\AliPayMini
  */
-class Base
+class Base extends Client
 {
     protected $tool;
 

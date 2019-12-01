@@ -8,10 +8,10 @@ namespace DtApp\Notice;
 
 /**
  * WorkTile
- * Class Worktile
+ * Class WorkKile
  * @package DtApp\Notice
  */
-class Worktile extends Client
+class WorkKile extends Base
 {
     /**
      * WorkTile自定义机器人接口链接

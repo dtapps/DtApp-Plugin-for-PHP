@@ -11,7 +11,7 @@ namespace DtApp\QqMini;
  * Class Security
  * @package DtApp\QqMini
  */
-class Security extends Client
+class Security extends Base
 {
     /**
      * 校验一张图片是否含有违法违规内容

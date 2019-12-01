@@ -6,7 +6,7 @@
 
 namespace DtApp\WeChatMini;
 
-class Client extends Base
+class Client
 {
     private $appId = '';
 

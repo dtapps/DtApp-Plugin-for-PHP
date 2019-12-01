@@ -11,7 +11,7 @@ namespace DtApp\Notice;
  * Class BearyChat
  * @package DtApp\Notice
  */
-class BearyChat extends Client
+class BeAryChat extends Base
 {
     /**
      * 倍洽自定义机器人接口链接

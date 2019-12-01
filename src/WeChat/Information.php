@@ -11,7 +11,7 @@ namespace DtApp\WeChat;
  * Class Information
  * @package DtApp\WeChat
  */
-class Information extends Client
+class Information extends Base
 {
 
 }

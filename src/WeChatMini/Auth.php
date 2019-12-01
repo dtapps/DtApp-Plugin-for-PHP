@@ -11,7 +11,7 @@ namespace DtApp\WeChatMini;
  * Class Auth
  * @package DtApp\WeChatMini
  */
-class Auth extends Client
+class Auth extends Base
 {
     private $appId = '';
     private $appSecret = '';

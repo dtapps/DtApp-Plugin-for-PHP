@@ -11,7 +11,7 @@ namespace DtApp\Notice;
  * Class SendCloud
  * @package DtApp\Notice
  */
-class SendCloud extends Client
+class SendCloud extends Base
 {
     /**
      * apiUser

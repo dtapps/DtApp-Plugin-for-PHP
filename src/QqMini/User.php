@@ -6,7 +6,7 @@
 
 namespace DtApp\QqMini;
 
-class User extends Client
+class User extends Base
 {
     /**
      * 检验数据的真实性，并且获取解密后的明文.

@@ -1,19 +1,17 @@
 <?php
 /**
- * Created by : PhpStorm
- * Date: 2019/11/6
- * Time: 22:31
- * User: 李光春 gc@dtapp.net
+ * Name:LiGuAngChun
+ * (c) Chaim <gc@dtapp.net>
  */
 
-namespace DtApp\Aes;
+namespace DtApp\Crypt;
 
 /**
  * 小程序加密解密
  * Class MiniProgram
  * @package DtApp\Aes
  */
-class MiniProgram
+class MiniProgram extends Base
 {
     /**
      * 密钥
@@ -44,7 +42,7 @@ class MiniProgram
      * @param $data 数据
      * @return string
      */
-    public function encrypt($data)
+    protected function encrypt($data)
     {
         try {
             if (!empty(is_array($data))) $data = json_encode($data);
@@ -59,7 +57,7 @@ class MiniProgram
      * @param string $data 数据
      * @return string
      */
-    public function decrypt(string $data)
+    protected function decrypt(string $data)
     {
         try {
             return openssl_decrypt(base64_decode(urldecode($data)), "AES-128-CBC", $this->key, true, $this->iv);

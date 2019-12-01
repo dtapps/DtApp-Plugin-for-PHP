@@ -11,7 +11,7 @@ namespace DtApp\QqMini;
  * Class Auth
  * @package DtApp\QqMini
  */
-class Auth extends Client
+class Auth extends Base
 {
     /**
      * 小程序AppId

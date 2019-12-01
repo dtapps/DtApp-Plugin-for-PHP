@@ -6,7 +6,7 @@
 
 namespace DtApp\Notice;
 
-class Client extends Base
+class Client
 {
     /**
      * 接口链接
@@ -62,35 +62,35 @@ class Client extends Base
         ]))->text($content);
     }
 
-    public function WorkKileText(string $user, string $content = '')
+    public function workKileText(string $user, string $content = '')
     {
-        return (new Worktile([
+        return (new WorkKile([
             'webhook' => $this->webhook
         ]))->text($user, $content);
     }
 
-    public function QyWxText(string $content = '')
+    public function qyWxText(string $content = '')
     {
-        return (new QyWeixin([
+        return (new QyWeiXin([
             'webhook' => $this->webhook
         ]))->text($content);
     }
 
-    public function QyWxMarkdown(string $content = '')
+    public function qyWxMarkdown(string $content = '')
     {
-        return (new QyWeixin([
+        return (new QyWeiXin([
             'webhook' => $this->webhook
         ]))->markdown($content);
     }
 
-    public function BeAryChatText(string $content = '')
+    public function beAryChatText(string $content = '')
     {
-        return (new BearyChat([
+        return (new BeAryChat([
             'webhook' => $this->webhook
         ]))->text($content);
     }
 
-    public function SendCloudSend(string $email, string $title, string $desc, array $content)
+    public function sendCloudSend(string $email, string $title, string $desc, array $content)
     {
         return (new SendCloud([
             'api_user' => $this->api_user,

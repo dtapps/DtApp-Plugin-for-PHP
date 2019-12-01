@@ -6,7 +6,7 @@
 
 namespace DtApp\AliPayMini;
 
-class User extends Client
+class User extends Base
 {
     /**
      * 小程序AppId

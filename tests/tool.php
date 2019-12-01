@@ -16,3 +16,5 @@ var_dump($tool->urlLenCode('https://www.liguangchun.cn/'));
 var_dump($tool->urlDeCode('https%3A%2F%2Fwww.liguangchun.cn%2F'));
 // 当前IP地址
 var_dump($tool->ipGet());
+
+var_dump($tool->reqIsEmptyRet(['id'=>'1111'],['id','user']));

@@ -11,7 +11,7 @@ namespace DtApp\WeChat;
  * Class Accoun
  * @package DtApp\WeChat
  */
-class Accoun extends Client
+class Accoun extends Base
 {
     /**
      * 将一条长链接转成短链接

@@ -7,7 +7,7 @@
 namespace DtApp\AliPayMini;
 
 
-class Client extends Base
+class Client
 {
     private $appId;
 
