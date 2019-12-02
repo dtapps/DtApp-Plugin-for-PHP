@@ -460,4 +460,13 @@ class Tool
     {
         return (new Random())->random($length, 7);
     }
+
+    /**
+     * 取域名地址
+     * @return string
+     */
+    public function reqGetWebsiteAddress()
+    {
+        return (new Req())->websiteAddress();
+    }
 }

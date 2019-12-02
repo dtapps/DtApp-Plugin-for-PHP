@@ -74,6 +74,16 @@ class Req extends Base
     }
 
     /**
+     * 取域名地址
+     * @return string
+     */
+    protected function websiteAddress()
+    {
+        $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+        return $http_type . $_SERVER['HTTP_HOST'] . "/";
+    }
+
+    /**
      * 发送GET请求
      * @param string $url 网址
      * @param string $data 参数
