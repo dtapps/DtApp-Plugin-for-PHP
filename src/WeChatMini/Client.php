@@ -45,16 +45,15 @@ class Client
 
     /**
      * 取code2session
-     * @param string $jc_code
+     * @param string $js_code
      * @return bool|mixed|string
      */
-    public function getCode2Session(string $jc_code)
+    public function getCode2Session(string $js_code)
     {
         return (new Auth([
             'appId' => $this->appId,
-            'appSecret' => $this->appSecret,
-            'tokenFile' => $this->tokenFile
-        ]))->code2Session($jc_code);
+            'appSecret' => $this->appSecret
+        ]))->code2Session($js_code);
     }
 
     /**
@@ -66,8 +65,7 @@ class Client
     {
         return (new Auth([
             'appId' => $this->appId,
-            'appSecret' => $this->appSecret,
-            'tokenFile' => $this->tokenFile
+            'appSecret' => $this->appSecret
         ]))->paidUnionIdTI($openid, $transaction_id);
     }
 
@@ -81,8 +79,7 @@ class Client
     {
         return (new Auth([
             'appId' => $this->appId,
-            'appSecret' => $this->appSecret,
-            'tokenFile' => $this->tokenFile
+            'appSecret' => $this->appSecret
         ]))->paidUnionIdOM($openid, $mch_id, $out_trade_no);
     }
 
@@ -108,6 +105,9 @@ class Client
      */
     public function getUserInfo(string $js_code, string $encryptedData, string $iv)
     {
-        return (new User())->userInfo($this->getCode2Session($js_code), $encryptedData, $iv);
+        return (new User())->userInfo((new Auth([
+            'appId' => $this->appId,
+            'appSecret' => $this->appSecret
+        ]))->code2Session($js_code), $encryptedData, $iv);
     }
 }

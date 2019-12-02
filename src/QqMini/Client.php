@@ -40,16 +40,15 @@ class Client
 
     /**
      * 取code2session
-     * @param string $jc_code
+     * @param string $js_code
      * @return bool|mixed
      */
-    public function getCode2Session(string $jc_code = '')
+    public function getCode2Session(string $js_code = '')
     {
         return (new Auth([
             'appId' => $this->appId,
-            'appSecret' => $this->appSecret,
-            'tokenFile' => $this->tokenFile,
-        ]))->code2Session($jc_code);
+            'appSecret' => $this->appSecret
+        ]))->code2Session($js_code);
     }
 
     /**
@@ -61,7 +60,7 @@ class Client
         return (new Auth([
             'appId' => $this->appId,
             'appSecret' => $this->appSecret,
-            'tokenFile' => $this->tokenFile,
+            'tokenFile' => $this->tokenFile
         ]))->accessToken();
     }
 
@@ -74,6 +73,9 @@ class Client
      */
     public function getUserInfo(string $js_code, string $encryptedData, string $iv)
     {
-        return (new User())->userInfo($this->getCode2Session($js_code), $encryptedData, $iv);
+        return (new User())->userInfo((new Auth([
+            'appId' => $this->appId,
+            'appSecret' => $this->appSecret
+        ]))->code2Session($js_code), $encryptedData, $iv);
     }
 }

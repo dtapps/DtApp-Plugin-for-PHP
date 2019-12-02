@@ -27,7 +27,7 @@ class User extends Base
         $result = json_decode($result, true);
         unset($result['watermark']);
         isset($result['openId']) ? $result['openId'] : $session['openid'];
-        $result['unionid'] = $session['unionid'];
+        if (!empty($result['openId'])) $result['unionid'] = $session['unionid'];
         return $result;
     }
 }

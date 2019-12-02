@@ -390,4 +390,74 @@ class Tool
     {
         return (new Preg())->isIp($ip);
     }
+
+    /**
+     * 生成随机字符串（纯数字）
+     * @param int $length 长度
+     * @return false|string
+     */
+    public function randomPN($length = 6)
+    {
+        return (new Random())->random($length, 1);
+    }
+
+    /**
+     * 生成随机字符串（纯小写字母）
+     * @param int $length 长度
+     * @return false|string
+     */
+    public function randomLL($length = 6)
+    {
+        return (new Random())->random($length, 2);
+    }
+
+    /**
+     * 生成随机字符串（纯大写字母）
+     * @param int $length 长度
+     * @return false|string
+     */
+    public function randomPCL($length = 6)
+    {
+        return (new Random())->random($length, 3);
+    }
+
+    /**
+     * 生成随机字符串（数字和小写字母）
+     * @param int $length 长度
+     * @return false|string
+     */
+    public function randomNALL($length = 6)
+    {
+        return (new Random())->random($length, 4);
+    }
+
+    /**
+     * 生成随机字符串（数字和大写字母）
+     * @param int $length 长度
+     * @return false|string
+     */
+    public function randomNACL($length = 6)
+    {
+        return (new Random())->random($length, 5);
+    }
+
+    /**
+     * 生成随机字符串（大小写字母）
+     * @param int $length 长度
+     * @return false|string
+     */
+    public function randomUALL($length = 6)
+    {
+        return (new Random())->random($length, 6);
+    }
+
+    /**
+     * 生成随机字符串（数字和大小写字母）
+     * @param int $length 长度
+     * @return false|string
+     */
+    public function randomNAUALL($length = 6)
+    {
+        return (new Random())->random($length, 7);
+    }
 }

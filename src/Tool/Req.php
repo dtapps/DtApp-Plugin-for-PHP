@@ -95,32 +95,42 @@ class Req extends Base
         $output = curl_exec($curl);
         curl_close($curl);
         if (empty($is_json)) return $output;
-        return json_decode($output, true);
+        try {
+            return json_decode($output, true);
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     /**
      * 发送Post请求
      * @param string $url 网址
-     * @param array $data 参数
+     * @param array $post_data 参数
      * @param string $headers
      * @param bool $is_json 是否返回Json格式
      * @return array|bool|mixed|string
      */
-    protected function postHttp(string $url, array $data, string $headers, bool $is_json)
+    protected function postHttp(string $url, array $post_data, string $headers, bool $is_json)
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: ' . $headers));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // 线下环境不用开启curl证书验证, 未调通情况可尝试添加该代码
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        $data = curl_exec($ch);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  // 从证书中检查SSL加密算法是否存在
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+        $content = curl_exec($ch);
         curl_close($ch);
-        if (empty($is_json)) return $data;
-        return json_decode($data, true);
+        if (empty($is_json)) return $content;
+        try {
+            return json_decode($content, true);
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

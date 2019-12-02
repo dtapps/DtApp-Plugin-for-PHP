@@ -47,9 +47,7 @@ class Time extends Base
     protected function getUDate(string $format)
     {
         date_default_timezone_set('Asia/Shanghai');
-        if (is_null(null)) {
-            $utimestamp = microtime(true);
-        }
+        if (is_null(null)) $utimestamp = microtime(true);
         $timestamp = floor($utimestamp);
         $milliseconds = round(($utimestamp - $timestamp) * 1000000);//改这里的数值控制毫秒位数
         return date(preg_replace('`(?<!\\\\)u`', $milliseconds, $format), $timestamp);
