@@ -242,7 +242,7 @@ class Tool
      * @param bool $is_json 是否返回Json格式
      * @return bool|mixed|string
      */
-    public function reqGetHttp(string $url, $data = '', bool $is_json = null)
+    public function reqGetHttp(string $url, $data = '', bool $is_json = false)
     {
         return (new Req())->getHttp($url, $data, $is_json);
     }
@@ -255,7 +255,7 @@ class Tool
      * @param bool $is_json 是否返回Json格式
      * @return array|bool|mixed|string
      */
-    public function reqPostHttp(string $url, array $data = [], bool $is_json = null, string $headers = 'application/json;charset=utf-8')
+    public function reqPostHttp(string $url, array $data = [], bool $is_json = false, string $headers = 'application/json;charset=utf-8')
     {
         return (new Req())->postHttp($url, $data, $headers, $is_json);
     }

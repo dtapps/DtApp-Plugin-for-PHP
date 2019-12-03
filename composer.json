@@ -1,19 +1,21 @@
 {
   "name": "liguangchun/dtapp",
-  "description": "PHP常用函数组件",
+  "description": "DtApp",
   "keywords": [
+    "liguangchun",
     "wechat",
     "miniapp",
     "wechat app",
     "qq app",
     "alipay app",
-    "dingding"
+    "dingding",
+    "DtApp"
   ],
   "type": "library",
   "license": "Apache-2.0",
   "authors": [
     {
-      "name": "李光春",
+      "name": "Chaim",
       "email": "gc@dtapp.net",
       "homepage": "https://api.dtapp.net"
     }

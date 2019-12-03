@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by : PhpStorm
- * Date: 2019/11/19
- * Time: 11:45
- * User: Chaim gc@dtapp.net
+ * PHP常用函数
+ * (c) Chaim <gc@dtapp.net>
  */
 
 namespace DtApp\DataBase;
