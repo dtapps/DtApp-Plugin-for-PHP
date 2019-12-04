@@ -50,37 +50,30 @@ class Client
      */
     public function getCode2Session(string $js_code)
     {
-        return (new Auth([
-            'appId' => $this->appId,
-            'appSecret' => $this->appSecret
-        ]))->code2Session($js_code);
+        return (new Auth())->code2Session($this->appId, $this->appSecret, $js_code);
     }
 
     /**
      * @param string $openid
      * @param string $transaction_id
+     * @param string $access_token
      * @return bool|mixed|string
      */
-    public function getPaidUnionIdTI(string $openid, string $transaction_id)
+    public function getPaidUnionIdTI(string $openid, string $transaction_id, string $access_token)
     {
-        return (new Auth([
-            'appId' => $this->appId,
-            'appSecret' => $this->appSecret
-        ]))->paidUnionIdTI($openid, $transaction_id);
+        return (new Auth())->paidUnionIdTI($openid, $transaction_id, $access_token);
     }
 
     /**
      * @param string $openid
      * @param string $mch_id
      * @param string $out_trade_no
+     * @param string $access_token
      * @return bool|mixed|string
      */
-    public function getPaidUnionIdOM(string $openid, string $mch_id, string $out_trade_no)
+    public function getPaidUnionIdOM(string $openid, string $mch_id, string $out_trade_no, string $access_token)
     {
-        return (new Auth([
-            'appId' => $this->appId,
-            'appSecret' => $this->appSecret
-        ]))->paidUnionIdOM($openid, $mch_id, $out_trade_no);
+        return (new Auth())->paidUnionIdOM($openid, $mch_id, $out_trade_no, $access_token);
     }
 
     /**
@@ -89,11 +82,7 @@ class Client
      */
     public function getAccessToken()
     {
-        return (new Auth([
-            'appId' => $this->appId,
-            'appSecret' => $this->appSecret,
-            'tokenFile' => $this->tokenFile
-        ]))->accessToken();
+        return (new Auth())->accessToken($this->appId, $this->appSecret, $this->tokenFile);
     }
 
     /**
@@ -105,9 +94,6 @@ class Client
      */
     public function getUserInfo(string $js_code, string $encryptedData, string $iv)
     {
-        return (new User())->userInfo((new Auth([
-            'appId' => $this->appId,
-            'appSecret' => $this->appSecret
-        ]))->code2Session($js_code), $encryptedData, $iv);
+        return (new User())->userInfo($this->appId, $this->appSecret, $js_code, $encryptedData, $iv);
     }
 }
