@@ -58,7 +58,6 @@ class Auth extends Base
     {
         if (!empty($config['appId'])) $this->appId = $config['appId'];
         if (!empty($config['appSecret'])) $this->appSecret = $config['appSecret'];
-        parent::__construct($config);
     }
 
     /**
@@ -73,10 +72,10 @@ class Auth extends Base
      * [refresh_token] => 刷新令牌。通过该令牌可以刷新access_token authbseBb3941249aa37467698ece60996338X20
      * [user_id] => 支付宝用户的唯一userId 2088212587578201
      * )
-     * @param $code
+     * @param string $code
      * @return bool
      */
-    protected function token($code)
+    protected function token(string $code)
     {
         $timestamp = date("Y-m-d H:i:s");
         $params['app_id'] = $this->appId;

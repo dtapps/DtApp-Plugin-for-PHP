@@ -62,7 +62,7 @@ class Time extends Base
     protected function getTimeDifference(string $end_time, string $start_time)
     {
         $end_time = strtotime($end_time);
-        $start_time = $start_time == '' ? strtotime(self::getData()) : strtotime($start_time);
+        $start_time = $start_time == '' ? strtotime(self::getData('Y-m-d H:i:s')) : strtotime($start_time);
         return $end_time - $start_time;
     }
 

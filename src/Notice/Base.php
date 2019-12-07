@@ -22,7 +22,7 @@ class Base extends Client
     protected $tool;
 
     /**
-     * sendcloud网址
+     * sendCloud网址
      * @var type
      */
     protected $sendcloud_url = 'https://api.sendcloud.net/apiv2/mail/sendtemplate';

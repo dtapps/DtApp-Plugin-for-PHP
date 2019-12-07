@@ -15,4 +15,4 @@ var_dump($tool->urlDeCode('https%3A%2F%2Fwww.liguangchun.cn%2F'));
 // 随机
 var_dump($tool->randomPN(2));
 
-var_dump($tool->pregIsIphoneAll('13553695467'));
+var_dump($tool->pregIsIphoneAll('xxx'));

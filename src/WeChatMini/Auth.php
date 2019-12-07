@@ -20,19 +20,14 @@ class Auth extends Base
      * 0 请求成功
      * 40029 code无效
      * 45011 频率限制，每个用户每分钟100次
-     * @param $appId 小程序ID
-     * @param $appSecret 小程序密钥
-     * @param $jsCode 登录时获取的 code
+     * @param string $appId 小程序ID
+     * @param string $appSecret 小程序密钥
+     * @param string $jsCode 登录时获取的 code
      * @return bool|mixed|string
      */
-    protected function code2Session($appId, $appSecret, $jsCode)
+    protected function code2Session(string $appId, string $appSecret, string $jsCode)
     {
-        $url = "$this->jscode2session_url?appid=$appId&secret=$appSecret&js_code=$jsCode&grant_type=authorization_code";
-        $get = $this->tool->reqGetHttp($url, '', true);
-        if (!isset($get['openid'])) return false;
-        if (isset($get['unionid'])) return $get;
-        foreach ($get as $k => $v) $get['unionid'] = '';
-        return $get;
+        return $this->tool->reqGetHttp("$this->jscode2session_url?appid=$appId&secret=$appSecret&js_code=$jsCode&grant_type=authorization_code", '', true);
     }
 
     /**
@@ -45,15 +40,12 @@ class Auth extends Base
      * -2100    参数错误，请检查appid和appsecret是否正确
      * @param string $openid 支付用户唯一标识
      * @param string $transaction_id 微信支付订单号
-     * @param $accessToken
+     * @param string $accessToken
      * @return bool|mixed|string
      */
-    protected function paidUnionIdTI($openid, $transaction_id, $accessToken)
+    protected function paidUnionIdTI(string $openid, string $transaction_id, string $accessToken)
     {
-        $url = "$this->getpaidunionid_url?access_token=$accessToken&openid=$openid&transaction_id=$transaction_id";
-        $get = $this->tool->reqGetHttp($url, '', true);
-        if ($get['errcode'] == 0) return false;
-        return $get;
+        return $this->tool->reqGetHttp("$this->getpaidunionid_url?access_token=$accessToken&openid=$openid&transaction_id=$transaction_id", '', true);
     }
 
     /**
@@ -70,12 +62,9 @@ class Auth extends Base
      * @param $accessToken
      * @return bool|mixed|string
      */
-    protected function paidUnionIdOM($openid, $mch_id, $out_trade_no, $accessToken)
+    protected function paidUnionIdOM(string $openid, string $mch_id, string $out_trade_no, string $accessToken)
     {
-        $url = "$this->getpaidunionid_url?access_token=$accessToken&openid=$openid&mch_id=$mch_id&out_trade_no=$out_trade_no";
-        $get = $this->tool->reqGetHttp($url, '', true);
-        if ($get['errcode'] == 0) return false;
-        return $get;
+        return $this->tool->reqGetHttp("$this->getpaidunionid_url?access_token=$accessToken&openid=$openid&mch_id=$mch_id&out_trade_no=$out_trade_no", '', true);
     }
 
     /**

@@ -58,7 +58,6 @@ class User extends Base
     {
         if (!empty($config['appId'])) $this->appId = $config['appId'];
         if (!empty($config['appSecret'])) $this->appSecret = $config['appSecret'];
-        parent::__construct($config);
     }
 
     /**
@@ -79,10 +78,10 @@ class User extends Base
      * [user_status] => 用户状态（Q/T/B/W）。    Q代表快速注册用户    T代表正常用户    B代表被冻结账户    W代表已注册，未激活的账户 T
      * [user_type] => 用户类型（1/2）    1代表公司账户2代表个人账户 2
      * )
-     * @param $auth_data
+     * @param array $auth_data
      * @return bool
      */
-    protected function userInfo($auth_data)
+    protected function userInfo(array $auth_data)
     {
         if (empty($auth_data)) return false;
         $auth_token = $auth_data['access_token'];

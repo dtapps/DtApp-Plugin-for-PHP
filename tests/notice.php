@@ -9,3 +9,7 @@ require_once '../vendor/autoload.php';
 var_dump((new \DtApp\Notice\Client([
     'webhook' => 'https://oapi.dingtalk.com/robot/send?access_token='
 ]))->dingDingText('111'));
+
+var_dump((new \DtApp\Notice\Client([
+    'webhook' => 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key='
+]))->qyWxText('111'));

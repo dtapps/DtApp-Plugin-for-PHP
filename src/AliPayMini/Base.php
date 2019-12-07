@@ -42,15 +42,14 @@ class Base extends Client
      * @param string $priKey 应用私钥
      * @return string
      */
-    protected function sign($data, $priKey)
+    protected function sign(string $data, string $priKey)
     {
         $str = $priKey;
         $str = chunk_split($str, 64, "\n");
         $private_key = "-----BEGIN RSA PRIVATE KEY-----\n$str-----END RSA PRIVATE KEY-----\n";
         $binary_signature = "";
         openssl_sign($data, $binary_signature, $private_key, OPENSSL_ALGO_SHA256);
-        $sign = base64_encode($binary_signature);
-        return $sign;
+        return base64_encode($binary_signature);
     }
 
     /**
