@@ -39,7 +39,7 @@ class MiniProgram extends Base
 
     /**
      * 加密
-     * @param $data 数据
+     * @param array|string $data 数据
      * @return string
      */
     protected function encrypt($data)

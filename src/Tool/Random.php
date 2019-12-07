@@ -19,7 +19,7 @@ class Random extends Base
      * @param int $type 类型，1 纯数字，2 纯小写字母，3 纯大写字母，4 数字和小写字母，5 数字和大写字母，6 大小写字母，7 数字和大小写字母
      * @return false|string
      */
-    protected function random($length = 6, $type = 1)
+    protected function random(int $length = 6, int $type = 1)
     {
         // 取字符集数组
         $number = range(0, 9);

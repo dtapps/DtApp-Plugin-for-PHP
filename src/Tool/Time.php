@@ -68,10 +68,10 @@ class Time extends Base
 
     /**
      * 将指定日期转换为时间戳
-     * @param $date
+     * @param string $date
      * @return false|int
      */
-    protected function dateToTimestamp($date)
+    protected function dateToTimestamp(string $date)
     {
         return strtotime($date);
     }

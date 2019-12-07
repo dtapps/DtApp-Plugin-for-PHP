@@ -41,7 +41,6 @@ class Auth extends Base
         if (!empty($config['appId'])) $this->appId = $config['appId'];
         if (!empty($config['appSecret'])) $this->appSecret = $config['appSecret'];
         if (!empty($config['tokenFile'])) $this->tokenFile = $config['tokenFile'];
-        parent::__construct($config);
     }
 
     /**
@@ -64,14 +63,10 @@ class Auth extends Base
      * @param string $js_code 登录时获取的 code
      * @return bool|mixed
      */
-    protected function code2Session($js_code)
+    protected function code2Session(string $js_code)
     {
         $url = "$this->jscode2session_url?appid=$this->appId&secret=$this->appSecret&js_code=$js_code&grant_type=authorization_code";
-        $get = $this->tool->reqGetHttp($url, '', true);
-        if (!empty($get['errcode'])) return false;
-        if (isset($get['unionid'])) return $get;
-        foreach ($get as $k => $v) $get['unionid'] = '';
-        return $get;
+        return $this->tool->reqGetHttp($url, '', true);
     }
 
     /**

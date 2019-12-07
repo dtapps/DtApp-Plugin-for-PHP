@@ -29,18 +29,14 @@ class User extends Base
      * [openid] => 737A2CE3272BA0CBB787697107B4C5EB
      * [unionid] => UID_09701111AAA13D95E1BB854C698B8749
      * )
-     * @param $session
+     * @param string $session
      * @param string $encryptedData 加密的用户数据
      * @param string $iv 与用户数据一同返回的初始向量
      * @return bool|false|mixed|string
      */
-    protected function userInfo($session, $encryptedData, $iv)
+    protected function userInfo(string $session, string $encryptedData, string $iv)
     {
         $result = openssl_decrypt(base64_decode($encryptedData), "AES-128-CBC", base64_decode($session['session_key']), 1, base64_decode($iv));
-        $result = json_decode($result, true);
-        unset($result['watermark']);
-        isset($result['openId']) ? $result['openId'] : $session['openid'];
-        if (!empty($result['openId'])) $result['unionid'] = $session['unionid'];
-        return $result;
+        return json_decode($result, true);
     }
 }

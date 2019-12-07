@@ -38,7 +38,7 @@ class Client
 
     /**
      * Aes加密
-     * @param $data
+     * @param array|string $data 数据
      * @return string
      */
     public function aesEncrypt($data)
@@ -58,7 +58,7 @@ class Client
 
     /**
      * 微信小程序加密
-     * @param $data
+     * @param array|string $data 数据
      * @return string
      */
     public function wxXcxEncrypt($data)
@@ -68,7 +68,7 @@ class Client
 
     /**
      * 微信小程序解密
-     * @param $data
+     * @param string $data
      * @return string
      */
     public function wxXcxDecrypt(string $data)

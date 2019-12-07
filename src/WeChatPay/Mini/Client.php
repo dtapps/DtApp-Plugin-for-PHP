@@ -1,9 +1,8 @@
 <?php
 /**
- * Name:LiGuAngChun
+ * PHP常用函数
  * (c) Chaim <gc@dtapp.net>
  */
-
 
 namespace DtApp\WeChatPay\Mini;
 
@@ -53,6 +52,4 @@ class Client
         if (!empty($config['subMchId'])) $this->subMchId = $config['subMchId'];
         if (!empty($config['milieu'])) $this->milieu = $config['milieu'];
     }
-
-
 }
