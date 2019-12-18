@@ -26,19 +26,23 @@
     "ext-openssl": "*",
     "ext-json": "*",
     "ext-curl": "*",
-    "ext-redis": "*"
+    "ext-redis": "*",
+    "ext-libxml": "*",
+    "ext-simplexml": "*",
+    "ext-mbstring": "*",
+    "ext-sodium": "*"
   },
   "autoload": {
     "psr-4": {
       "DtApp\\Tool\\": "src/Tool",
       "DtApp\\Crypt\\": "src/Crypt",
       "DtApp\\Notice\\": "src/Notice",
-      "DtApp\\WeChatMini\\": "src/WeChatMini",
-      "DtApp\\QqMini\\": "src/QqMini",
-      "DtApp\\AliPayMini\\": "src/AliPayMini",
-      "DtApp\\WeChat\\": "src/WeChat",
-      "DtApp\\WeChatPay\\": "src/WeChatPay",
-      "DtApp\\DataBase\\": "src/DataBase"
+      "DtApp\\DataBase\\": "src/DataBase",
+      "DtApp\\Sms\\": "src/Sms",
+      "DtApp\\Pay\\": "src/Pay",
+      "DtApp\\MiniProgram\\": "src/MiniProgram",
+      "DtApp\\MiniGame\\": "src/MiniGame",
+      "DtApp\\Web\\": "src/Web"
     }
   }
 }

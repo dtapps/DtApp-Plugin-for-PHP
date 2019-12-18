@@ -1,18 +1,18 @@
 <?php
 /**
- * PHP常用函数
  * (c) Chaim <gc@dtapp.net>
  */
 
 require_once '../vendor/autoload.php';
 
-$tool = new \DtApp\Tool\Tool();
 
 // 编码
-var_dump($tool->urlLenCode('https://www.liguangchun.cn/'));
+var_dump(\DtApp\Tool\Tool::urlLenCode('https://www.liguangchun.cn/'));
 // 解码
-var_dump($tool->urlDeCode('https%3A%2F%2Fwww.liguangchun.cn%2F'));
+var_dump(\DtApp\Tool\Tool::urlDeCode('https%3A%2F%2Fwww.liguangchun.cn%2F'));
 // 随机
-var_dump($tool->randomPN(2));
-
-var_dump($tool->pregIsIphoneAll('xxx'));
+//var_dump($tool->randomPN(2));
+//
+//var_dump($tool->timeGetUDate());
+//
+//var_dump($tool->strExtractBefore('52722',0,1));

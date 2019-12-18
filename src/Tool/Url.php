@@ -1,9 +1,9 @@
 <?php
 /**
  * PHP常用函数
+ * https://git.dtapp.net/Chaim/DtApp-Plugin-for-PHP.git
  * (c) Chaim <gc@dtapp.net>
  */
-
 
 namespace DtApp\Tool;
 
@@ -12,15 +12,16 @@ namespace DtApp\Tool;
  * Class Url
  * @package DtApp\Tool
  */
-class Url extends Base
+class Url extends Tool
 {
 
     /**
      * @param string $url
      * @return string
      */
-    protected function lenCode(string $url)
+    protected static function lenCode(string $url)
     {
+        if (empty($url)) return false;
         return urlencode($url);
     }
 
@@ -29,8 +30,22 @@ class Url extends Base
      * @param string $url
      * @return string
      */
-    protected function deCode(string $url)
+    protected static function deCode(string $url)
     {
+        if (empty($url)) return false;
         return urldecode($url);
+    }
+
+    /**
+     * 格式化参数格式化成url参数
+     * @param array $data
+     * @return string
+     */
+    protected static function toParams(array $data)
+    {
+        $buff = "";
+        foreach ($data as $k => $v) if ($k != "sign" && $v !== "" && !is_array($v)) $buff .= $k . "=" . $v . "&";
+        $buff = trim($buff, "&");
+        return $buff;
     }
 }

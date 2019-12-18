@@ -1,13 +1,14 @@
 <?php
 /**
  * PHP常用函数
+ * https://git.dtapp.net/Chaim/DtApp-Plugin-for-PHP.git
  * (c) Chaim <gc@dtapp.net>
  */
 
 namespace DtApp\Tool;
 
 
-class Str extends Base
+class Str extends Tool
 {
     /**
      * 截取字符串前面n个字符
@@ -16,7 +17,7 @@ class Str extends Base
      * @param int $end_num 多少个
      * @return bool|false|string
      */
-    public function extractBefore(string $str, int $start_num, int $end_num)
+    public static function extractBefore(string $str, int $start_num, int $end_num)
     {
         if (strlen($str) < $start_num + $end_num) return $str;
         return substr($str, $start_num, $end_num);
@@ -28,7 +29,7 @@ class Str extends Base
      * @param int $num 多少个
      * @return false|string
      */
-    public function extractRear(string $str, int $num)
+    public static function extractRear(string $str, int $num)
     {
         if (strlen($str) <= $num) return $str;
         return substr($str, -$num);

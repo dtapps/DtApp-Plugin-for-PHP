@@ -1,6 +1,7 @@
 <?php
 /**
  * PHP常用函数
+ * https://git.dtapp.net/Chaim/DtApp-Plugin-for-PHP.git
  * (c) Chaim <gc@dtapp.net>
  */
 
@@ -11,14 +12,14 @@ namespace DtApp\Tool;
  * Class Preg
  * @package DtApp\Tool
  */
-class Preg extends Base
+class Preg extends Tool
 {
     /**
      * 验证手机号码
      * @param $mobile
      * @return bool
      */
-    protected function isIphone($mobile)
+    protected static function isIphone($mobile)
     {
         if (preg_match('/^[1]([3-9])[0-9]{9}$/', $mobile)) return true;
         return false;
@@ -29,7 +30,7 @@ class Preg extends Base
      * @param $mobile
      * @return bool
      */
-    protected function isIphoneAll($mobile)
+    protected static function isIphoneAll($mobile)
     {
         if (preg_match('/^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$/', $mobile)) return true;
         return false;
@@ -40,7 +41,7 @@ class Preg extends Base
      * @param $tel
      * @return bool
      */
-    protected function isTel($tel)
+    protected static function isTel($tel)
     {
         if (preg_match("/^(\(\d{3,4}\)|\d{3,4}-)?\d{7,8}$/", $tel)) return true;
         return false;
@@ -51,7 +52,7 @@ class Preg extends Base
      * @param int $id 身份证号码
      * @return bool
      */
-    protected function isIdCard($id)
+    protected static function isIdCard($id)
     {
         if (preg_match("/^\d{15}|\d{18}$/", $id)) return true;
         return false;
@@ -62,7 +63,7 @@ class Preg extends Base
      * @param $digit
      * @return bool
      */
-    protected function isDigit($digit)
+    protected static function isDigit($digit)
     {
         if (preg_match("/^\d*$/", $digit)) return true;
         return false;
@@ -73,7 +74,7 @@ class Preg extends Base
      * @param $num
      * @return bool
      */
-    protected function isNum($num)
+    protected static function isNum($num)
     {
         if (is_numeric($num)) return true;
         return false;
@@ -84,7 +85,7 @@ class Preg extends Base
      * @param $str
      * @return bool
      */
-    protected function isStr($str)
+    protected static function isStr($str)
     {
         if (preg_match("/^\w+$/", $str)) return true;
         return false;
@@ -95,7 +96,7 @@ class Preg extends Base
      * @param $str
      * @return bool
      */
-    protected function isPassword($str)
+    protected static function isPassword($str)
     {
         if (preg_match("/^[a-zA-Z]\w{5,17}$/", $str)) return true;
         return false;
@@ -106,7 +107,7 @@ class Preg extends Base
      * @param $str
      * @return bool
      */
-    protected function isChinese($str)
+    protected static function isChinese($str)
     {
         if (preg_match("/^[\u4e00-\u9fa5],{0,}$/", $str)) return true;
         return false;
@@ -117,7 +118,7 @@ class Preg extends Base
      * @param $email
      * @return bool
      */
-    protected function isEmail($email)
+    protected static function isEmail($email)
     {
         if (preg_match("/^\w+[-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/", $email)) return true;
         return false;
@@ -128,7 +129,7 @@ class Preg extends Base
      * @param $url
      * @return bool
      */
-    protected function isLink($url)
+    protected static function isLink($url)
     {
         if (preg_match("/http:\/\/[\w.]+[\w\/]*[\w.]*\??[\w=&\+\%]*/is", $url)) return true;
         return false;
@@ -139,7 +140,7 @@ class Preg extends Base
      * @param $qq
      * @return bool
      */
-    protected function isQq($qq)
+    protected static function isQq($qq)
     {
         if (preg_match("/^[1-9][0-9]{4,}$/", $qq)) return true;
         return false;
@@ -150,7 +151,7 @@ class Preg extends Base
      * @param $ip
      * @return bool
      */
-    protected function isIp($ip)
+    protected static function isIp($ip)
     {
         if (preg_match("/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/", $ip)) return true;
         return false;

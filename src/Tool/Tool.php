@@ -1,6 +1,5 @@
 <?php
 /**
- * PHP常用函数
  * (c) Chaim <gc@dtapp.net>
  */
 
@@ -18,9 +17,9 @@ class Tool
      * @param string $url
      * @return string
      */
-    public function urlLenCode(string $url)
+    public static function urlLenCode(string $url)
     {
-        return (new Url())->lenCode($url);
+        return Url::lenCode($url);
     }
 
     /**
@@ -28,9 +27,19 @@ class Tool
      * @param string $url
      * @return string
      */
-    public function urlDeCode(string $url)
+    public static function urlDeCode(string $url)
     {
-        return (new Url())->deCode($url);
+        return Url::deCode($url);
+    }
+
+    /**
+     * 格式化参数格式化成url参数
+     * @param array $data
+     * @return string
+     */
+    public static function urlToParams(array $data)
+    {
+        return Url::toParams($data);
     }
 
     /**
@@ -38,9 +47,9 @@ class Tool
      * @param $array
      * @return mixed
      */
-    public function arrayRand(array $array)
+    public static function arrayRand(array $array)
     {
-        return (new Arrays())->rand($array);
+        return Arrays::rand($array);
     }
 
     /**
@@ -48,18 +57,18 @@ class Tool
      * @param string $name
      * @return bool
      */
-    public function fileDelete(string $name)
+    public static function fileDelete(string $name)
     {
-        return (new File())->delete($name);
+        return File::delete($name);
     }
 
     /**
      * 请求的IP
      * @return string|null
      */
-    public function ipGet()
+    public static function ipGet()
     {
-        return (new Ip())->get();
+        return Ip::get();
     }
 
     /**
@@ -67,9 +76,9 @@ class Tool
      * @param int $num
      * @return bool
      */
-    public function intIsEvenNumbers(int $num)
+    public static function intIsEvenNumbers(int $num)
     {
-        return (new IntS())->isEvenNumbers($num);
+        return IntS::isEvenNumbers($num);
     }
 
     /**
@@ -77,9 +86,9 @@ class Tool
      * @param int $num
      * @return bool
      */
-    public function intIsOddNumbers(int $num)
+    public static function intIsOddNumbers(int $num)
     {
-        return (new IntS())->isOddNumbers($num);
+        return IntS::isOddNumbers($num);
     }
 
     /**
@@ -89,9 +98,9 @@ class Tool
      * @param int $end_num 多少个
      * @return bool|false|string
      */
-    public function strExtractBefore(string $str, int $start_num, int $end_num)
+    public static function strExtractBefore(string $str, int $start_num, int $end_num)
     {
-        return (new Str())->extractBefore($str, $start_num, $end_num);
+        return Str::extractBefore($str, $start_num, $end_num);
     }
 
     /**
@@ -100,9 +109,9 @@ class Tool
      * @param int $num 多少个
      * @return false|string
      */
-    public function strExtractRear(string $str, int $num)
+    public static function strExtractRear(string $str, int $num)
     {
-        return (new Str())->extractRear($str, $num);
+        return Str::extractRear($str, $num);
     }
 
     /**
@@ -110,28 +119,27 @@ class Tool
      * @param string $format 格式，默认：Y-m-d H:i:s
      * @return false|string
      */
-    public function timeGetData(string $format = 'Y-m-d H:i:s')
+    public static function timeGetData(string $format = 'Y-m-d H:i:s')
     {
-        return (new Time())->getData($format);
+        return Time::getData($format);
     }
 
     /**
      * 当前时间戳
      * @return false|string
      */
-    public function timeGetTime()
+    public static function timeGetTime()
     {
-        return (new Time())->getTime();
+        return Time::getTime();
     }
 
     /**
      * 毫秒时间
-     * @param string $format 格式 默认：YmdHisu
      * @return false|string
      */
-    public function timeGetUDate(string $format = 'YmdHisu')
+    public static function timeGetUDate()
     {
-        return (new Time())->getUDate($format);
+        return Time::getUDate();
     }
 
     /**
@@ -140,9 +148,9 @@ class Tool
      * @param string $start_time 开始时间
      * @return false|int
      */
-    public function timeGetTimeDifference(string $end_time, string $start_time = '')
+    public static function timeGetTimeDifference(string $end_time, string $start_time = '')
     {
-        return (new Time())->getTimeDifference($end_time, $start_time);
+        return Time::getTimeDifference($end_time, $start_time);
     }
 
     /**
@@ -150,9 +158,31 @@ class Tool
      * @param string $date
      * @return false|int
      */
-    public function timeDateToTimestamp(string $date)
+    public static function timeDateToTimestamp(string $date)
     {
-        return (new Time())->dateToTimestamp($date);
+        return Time::dateToTimestamp($date);
+    }
+
+    /**
+     * 获取某个时间之后的时间
+     * @param string $format
+     * @param int $mun
+     * @return false|int
+     */
+    public static function timeDateRear(string $format = "Y-m-d H:i:s", int $mun = 10)
+    {
+        return Time::dateRear($format, $mun);
+    }
+
+    /**
+     * 获取某个时间之前的时间
+     * @param string $format
+     * @param int $mun
+     * @return false|int
+     */
+    public static function timeDateBefore(string $format = "Y-m-d H:i:s", int $mun = 10)
+    {
+        return Time::dateBefore($format, $mun);
     }
 
     /**
@@ -161,9 +191,9 @@ class Tool
      * @param string $msg 描述
      * @param int $code 状态
      */
-    public function retJsonSuccess(array $data = [], string $msg = 'success', int $code = 0)
+    public static function retJsonSuccess(array $data = [], string $msg = 'success', int $code = 0)
     {
-        return (new Ret())->jsonSuccess($data, $msg, $code);
+        return Ret::jsonSuccess($data, $msg, $code);
     }
 
     /**
@@ -172,9 +202,9 @@ class Tool
      * @param int $code 状态码
      * @param array $data 数据
      */
-    public function retJsonError(string $msg = 'error', int $code = 1, array $data = [])
+    public static function retJsonError(string $msg = 'error', int $code = 1, array $data = [])
     {
-        return (new Ret())->jsonError($msg, $code, $data);
+        return Ret::jsonError($msg, $code, $data);
     }
 
     /**
@@ -183,9 +213,9 @@ class Tool
      * @param array $arr
      * @return array|bool 有空值就返回false
      */
-    public function reqIsEmpty(array $data = [], array $arr = [])
+    public static function reqIsEmpty(array $data = [], array $arr = [])
     {
-        return (new Req())->isEmpty($data, $arr);
+        return Req::isEmpty($data, $arr);
     }
 
     /**
@@ -194,45 +224,45 @@ class Tool
      * @param array $arr
      * @return array|bool|void
      */
-    public function reqIsEmptyRet(array $data = [], array $arr = [])
+    public static function reqIsEmptyRet(array $data = [], array $arr = [])
     {
-        return (new Req())->isEmptyRet($data, $arr);
+        return Req::isEmptyRet($data, $arr);
     }
 
     /**
      * 判断是否为GET方式
      * @return bool
      */
-    public function reqIsGet()
+    public static function reqIsGet()
     {
-        return (new Req())->isGet();
+        return Req::isGet();
     }
 
     /**
      * 判断是否为POST方式
      * @return bool
      */
-    public function reqIsPost()
+    public static function reqIsPost()
     {
-        return (new Req())->isPost();
+        return Req::isPost();
     }
 
     /**
      * 判断是否为PUT方式
      * @return boolean
      */
-    public function reqIsPut()
+    public static function reqIsPut()
     {
-        return (new Req())->isPut();
+        return Req::isPut();
     }
 
     /**
      * 判断是否为DELETE方式
      * @return boolean
      */
-    public function reqIsDelete()
+    public static function reqIsDelete()
     {
-        return (new Req())->isDelete();
+        return Req::isDelete();
     }
 
     /**
@@ -241,10 +271,11 @@ class Tool
      * @param string $data 参数
      * @param bool $is_json 是否返回Json格式
      * @return bool|mixed|string
+     * @throws DtAppException
      */
-    public function reqGetHttp(string $url, $data = '', bool $is_json = false)
+    public static function reqGetHttp(string $url, $data = '', bool $is_json = false)
     {
-        return (new Req())->getHttp($url, $data, $is_json);
+        return Req::getHttp($url, $data, $is_json);
     }
 
     /**
@@ -254,10 +285,24 @@ class Tool
      * @param string $headers
      * @param bool $is_json 是否返回Json格式
      * @return array|bool|mixed|string
+     * @throws DtAppException
      */
-    public function reqPostHttp(string $url, array $data = [], bool $is_json = false, string $headers = 'application/json;charset=utf-8')
+    public static function reqPostHttp(string $url, array $data = [], bool $is_json = false, string $headers = 'application/json;charset=utf-8')
     {
-        return (new Req())->postHttp($url, $data, $headers, $is_json);
+        return Req::postHttp($url, $data, $headers, $is_json);
+    }
+
+    /**
+     * 发送xml数据
+     * @param string $url
+     * @param string $data
+     * @param string $headers
+     * @return string
+     * @throws DtAppException
+     */
+    public static function reqPostXmlHttp(string $url, string $data = '', string $headers = 'application/json;charset=utf-8')
+    {
+        return Req::postXml($url, $data, $headers);
     }
 
     /**
@@ -265,9 +310,9 @@ class Tool
      * @param int $mobile 手机号码
      * @return bool
      */
-    public function pregIsIphone(int $mobile)
+    public static function pregIsIphone(int $mobile)
     {
-        return (new Preg())->isIphone($mobile);
+        return Preg::isIphone($mobile);
     }
 
     /**
@@ -275,9 +320,9 @@ class Tool
      * @param int $mobile 手机号码
      * @return bool
      */
-    public function pregIsIphoneAll(int $mobile)
+    public static function pregIsIphoneAll(int $mobile)
     {
-        return (new Preg())->isIphoneAll($mobile);
+        return Preg::isIphoneAll($mobile);
     }
 
     /**
@@ -285,9 +330,9 @@ class Tool
      * @param int $tel 电话号码
      * @return bool
      */
-    public function pregIsTel(int $tel)
+    public static function pregIsTel(int $tel)
     {
-        return (new Preg())->isTel($tel);
+        return Preg::isTel($tel);
     }
 
 
@@ -296,9 +341,9 @@ class Tool
      * @param int $id 身份证号码
      * @return bool
      */
-    public function pregIsIdCard(int $id)
+    public static function pregIsIdCard(int $id)
     {
-        return (new Preg())->isIdCard($id);
+        return Preg::isIdCard($id);
     }
 
     /**
@@ -306,9 +351,9 @@ class Tool
      * @param $digit
      * @return bool
      */
-    public function pregIsDigit($digit)
+    public static function pregIsDigit($digit)
     {
-        return (new Preg())->isDigit($digit);
+        return Preg::isDigit($digit);
     }
 
     /**
@@ -316,9 +361,9 @@ class Tool
      * @param $num
      * @return bool
      */
-    public function pregIsNum($num)
+    public static function pregIsNum($num)
     {
-        return (new Preg())->isNum($num);
+        return Preg::isNum($num);
     }
 
     /**
@@ -326,9 +371,9 @@ class Tool
      * @param $str
      * @return bool
      */
-    public function pregIsStr($str)
+    public static function pregIsStr($str)
     {
-        return (new Preg())->isStr($str);
+        return Preg::isStr($str);
     }
 
     /**
@@ -336,9 +381,9 @@ class Tool
      * @param $str
      * @return bool
      */
-    public function pregIsPassword($str)
+    public static function pregIsPassword($str)
     {
-        return (new Preg())->isPassword($str);
+        return Preg::isPassword($str);
     }
 
     /**
@@ -346,9 +391,9 @@ class Tool
      * @param $str
      * @return bool
      */
-    public function pregIsChinese($str)
+    public static function pregIsChinese($str)
     {
-        return (new Preg())->isChinese($str);
+        return Preg::isChinese($str);
     }
 
     /**
@@ -356,9 +401,9 @@ class Tool
      * @param $email
      * @return bool
      */
-    public function pregIsEmail($email)
+    public static function pregIsEmail($email)
     {
-        return (new Preg())->isEmail($email);
+        return Preg::isEmail($email);
     }
 
     /**
@@ -366,9 +411,9 @@ class Tool
      * @param $url
      * @return bool
      */
-    public function pregIsLink($url)
+    public static function pregIsLink($url)
     {
-        return (new Preg())->isLink($url);
+        return Preg::isLink($url);
     }
 
     /**
@@ -376,9 +421,9 @@ class Tool
      * @param $qq
      * @return bool
      */
-    public function pregIsQq($qq)
+    public static function pregIsQq($qq)
     {
-        return (new Preg())->isQq($qq);
+        return Preg::isQq($qq);
     }
 
     /**
@@ -386,9 +431,9 @@ class Tool
      * @param $ip
      * @return bool
      */
-    public function pregIsIp($ip)
+    public static function pregIsIp($ip)
     {
-        return (new Preg())->isIp($ip);
+        return Preg::isIp($ip);
     }
 
     /**
@@ -396,9 +441,9 @@ class Tool
      * @param int $length 长度
      * @return false|string
      */
-    public function randomPN($length = 6)
+    public static function randomPN($length = 6)
     {
-        return (new Random())->random($length, 1);
+        return Random::random($length, 1);
     }
 
     /**
@@ -406,9 +451,9 @@ class Tool
      * @param int $length 长度
      * @return false|string
      */
-    public function randomLL($length = 6)
+    public static function randomLL($length = 6)
     {
-        return (new Random())->random($length, 2);
+        return Random::random($length, 2);
     }
 
     /**
@@ -416,9 +461,9 @@ class Tool
      * @param int $length 长度
      * @return false|string
      */
-    public function randomPCL($length = 6)
+    public static function randomPCL($length = 6)
     {
-        return (new Random())->random($length, 3);
+        return Random::random($length, 3);
     }
 
     /**
@@ -426,9 +471,9 @@ class Tool
      * @param int $length 长度
      * @return false|string
      */
-    public function randomNALL($length = 6)
+    public static function randomNALL($length = 6)
     {
-        return (new Random())->random($length, 4);
+        return Random::random($length, 4);
     }
 
     /**
@@ -436,9 +481,9 @@ class Tool
      * @param int $length 长度
      * @return false|string
      */
-    public function randomNACL($length = 6)
+    public static function randomNACL($length = 6)
     {
-        return (new Random())->random($length, 5);
+        return Random::random($length, 5);
     }
 
     /**
@@ -446,9 +491,9 @@ class Tool
      * @param int $length 长度
      * @return false|string
      */
-    public function randomUALL($length = 6)
+    public static function randomUALL($length = 6)
     {
-        return (new Random())->random($length, 6);
+        return Random::random($length, 6);
     }
 
     /**
@@ -456,17 +501,56 @@ class Tool
      * @param int $length 长度
      * @return false|string
      */
-    public function randomNAUALL($length = 6)
+    public static function randomNAUALL($length = 6)
     {
-        return (new Random())->random($length, 7);
+        return Random::random($length, 7);
     }
 
     /**
      * 取域名地址
      * @return string
      */
-    public function reqGetWebsiteAddress()
+    public static function reqGetWebsiteAddress()
     {
-        return (new Req())->websiteAddress();
+        return Req::websiteAddress();
+    }
+
+    /**
+     * 数组转换为xml
+     * @param array $data
+     * @return string
+     * @throws DtAppException
+     */
+    public static function xmlArrayToXml(array $data = [])
+    {
+        return Xml::toXml($data);
+    }
+
+    /**
+     * 将XML转为array
+     * @param string $data
+     * @return string
+     * @throws DtAppException
+     */
+    public static function xmlXmlToArray(string $data = '')
+    {
+        return Xml::toArray($data);
+    }
+
+    /**
+     * 上传图片
+     * @param string $url
+     * @param array $data
+     * @param string $sslCertPath
+     * @param string $sslKeyPath
+     * @param bool $userCert
+     * @param string $headers
+     * @param int $timeout
+     * @return string
+     * @throws DtAppException
+     */
+    public static function reqPostFile(string $url, array $data, string $sslCertPath, string $sslKeyPath, bool $userCert = true, string $headers = 'multipart/form-data', int $timeout = 30)
+    {
+        return Req::postFile($url, $data, $headers, $userCert, $timeout, $sslCertPath, $sslKeyPath);
     }
 }

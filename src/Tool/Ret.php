@@ -1,6 +1,7 @@
 <?php
 /**
  * PHP常用函数
+ * https://git.dtapp.net/Chaim/DtApp-Plugin-for-PHP.git
  * (c) Chaim <gc@dtapp.net>
  */
 
@@ -11,7 +12,7 @@ namespace DtApp\Tool;
  * Class Ret
  * @package DtApp\Tool
  */
-class Ret extends Base
+class Ret extends Tool
 {
     /**
      * 返回Json-成功
@@ -19,7 +20,7 @@ class Ret extends Base
      * @param string $msg 描述
      * @param int $code 状态
      */
-    protected function jsonSuccess(array $data, string $msg, int $code)
+    protected static function jsonSuccess(array $data, string $msg, int $code)
     {
         header('Content-Type:application/json; charset=utf-8');
         echo json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]);
@@ -32,7 +33,7 @@ class Ret extends Base
      * @param int $code 状态码
      * @param array $data 数据
      */
-    protected function jsonError(string $msg, int $code, array $data)
+    protected static function jsonError(string $msg, int $code, array $data)
     {
         header('Content-Type:application/json; charset=utf-8');
         echo json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]);
