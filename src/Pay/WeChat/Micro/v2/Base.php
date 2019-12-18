@@ -131,27 +131,4 @@ class Base extends WeChatV2MicroClient
         if (!isset($json['data'][0]['serial_no'])) throw new DtAppException('获取平台证书接口异常');
         return $json['data'][0]['serial_no'];
     }
-
-    /**
-     * 加密后的证书内容解密
-     * @param string $ciphertext 加密后的证书内容
-     * @param string $nonce 加密证书的随机串,加密证书的随机串
-     * @param string $key 你的APIv3密钥
-     * @return false|string
-     */
-    protected static function decodePem(string $ciphertext, string $nonce, string $key)
-    {
-        $associated_data = 'certificate';
-        $check_sodium_mod = extension_loaded('sodium');
-        if ($check_sodium_mod === false) {
-            echo '没有安装sodium模块';
-            die;
-        }
-        $check_aes256gcm = sodium_crypto_aead_aes256gcm_is_available();
-        if ($check_aes256gcm === false) {
-            echo '当前不支持aes256gcm';
-            die;
-        }
-        return sodium_crypto_aead_aes256gcm_decrypt(base64_decode($ciphertext), $associated_data, $nonce, $key);//这是解密出来的证书内容,复制出来保存就行了
-    }
 }

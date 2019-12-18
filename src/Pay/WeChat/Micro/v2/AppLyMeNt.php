@@ -58,10 +58,7 @@ class AppLyMeNt extends Base
         $data['contact'] = self::getEncrypt($params['contact']); // 超级管理员姓名
         $data['contact_phone'] = self::getEncrypt($params['contact_phone']); // 手机号码
         $data['contact_email'] = self::getEncrypt($params['contact_email']); // 联系邮箱
-        var_dump($data);
         $data['sign'] = self::sign($data, $key, $data['sign_type']);
-        var_dump($data);
-        exit();
         return Tool::reqPostXmlHttp(self::$_url . 'submit', Tool::xmlArrayToXml($data));
     }
 
