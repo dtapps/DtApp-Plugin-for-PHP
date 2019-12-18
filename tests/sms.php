@@ -5,9 +5,10 @@
 
 require_once '../vendor/autoload.php';
 
-$smsBao = new \DtApp\Sms\SmsBaoClient([
+\DtApp\Sms\SmsBaoClient::setConfig([
     'user' => '',
     'pass' => ''
+
 ]);
 // 查询额度
-var_dump($smsBao->queryBalance());
+var_dump(\DtApp\Sms\SmsBaoClient::queryBalance());
