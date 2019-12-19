@@ -17,7 +17,7 @@ class Str extends Tool
      * @param int $end_num 多少个
      * @return bool|false|string
      */
-    public static function extractBefore(string $str, int $start_num, int $end_num)
+    protected static function extractBefore(string $str, int $start_num, int $end_num)
     {
         if (strlen($str) < $start_num + $end_num) return $str;
         return substr($str, $start_num, $end_num);
@@ -29,9 +29,83 @@ class Str extends Tool
      * @param int $num 多少个
      * @return false|string
      */
-    public static function extractRear(string $str, int $num)
+    protected static function extractRear(string $str, int $num)
     {
         if (strlen($str) <= $num) return $str;
         return substr($str, -$num);
     }
+
+    /**
+     * 过滤字符串
+     * @param string $str
+     * @return string
+     */
+    protected static function filter(string $str)
+    {
+        $str = str_replace('`', '', $str);
+        $str = str_replace('·', '', $str);
+        $str = str_replace('~', '', $str);
+        $str = str_replace('!', '', $str);
+        $str = str_replace('！', '', $str);
+        $str = str_replace('@', '', $str);
+        $str = str_replace('#', '', $str);
+        $str = str_replace('$', '', $str);
+        $str = str_replace('￥', '', $str);
+        $str = str_replace('%', '', $str);
+        $str = str_replace('^', '', $str);
+        $str = str_replace('……', '', $str);
+        $str = str_replace('&', '', $str);
+        $str = str_replace('*', '', $str);
+        $str = str_replace('(', '', $str);
+        $str = str_replace(')', '', $str);
+        $str = str_replace('（', '', $str);
+        $str = str_replace('）', '', $str);
+        $str = str_replace('-', '', $str);
+        $str = str_replace('_', '', $str);
+        $str = str_replace('——', '', $str);
+        $str = str_replace('+', '', $str);
+        $str = str_replace('=', '', $str);
+        $str = str_replace('|', '', $str);
+        $str = str_replace('\\', '', $str);
+        $str = str_replace('[', '', $str);
+        $str = str_replace(']', '', $str);
+        $str = str_replace('【', '', $str);
+        $str = str_replace('】', '', $str);
+        $str = str_replace('{', '', $str);
+        $str = str_replace('}', '', $str);
+        $str = str_replace(';', '', $str);
+        $str = str_replace('；', '', $str);
+        $str = str_replace(':', '', $str);
+        $str = str_replace('：', '', $str);
+        $str = str_replace('\'', '', $str);
+        $str = str_replace('"', '', $str);
+        $str = str_replace('“', '', $str);
+        $str = str_replace('”', '', $str);
+        $str = str_replace(',', '', $str);
+        $str = str_replace('，', '', $str);
+        $str = str_replace('<', '', $str);
+        $str = str_replace('>', '', $str);
+        $str = str_replace('《', '', $str);
+        $str = str_replace('》', '', $str);
+        $str = str_replace('.', '', $str);
+        $str = str_replace('。', '', $str);
+        $str = str_replace('/', '', $str);
+        $str = str_replace('、', '', $str);
+        $str = str_replace('?', '', $str);
+        $str = str_replace('？', '', $str);
+        $str = str_replace('╮', '', $str);
+        $str = str_replace('(', '', $str);
+        $str = str_replace(')', '', $str);
+        $str = str_replace('r', '', $str);
+        $str = str_replace('ぷ', '', $str);
+        $str = str_replace('〆', '', $str);
+        $str = str_replace('ゞ', '', $str);
+        $str = str_replace('ヤ', '', $str);
+        $str = str_replace('ゼ', '', $str);
+        $str = str_replace('ǎ', '', $str);
+        $str = str_replace('ǎ', '', $str);
+        $str = str_replace('〆', '', $str);
+        return trim($str);
+    }
+
 }

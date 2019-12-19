@@ -553,4 +553,14 @@ class Tool
     {
         return Req::postFile($url, $data, $headers, $userCert, $timeout, $sslCertPath, $sslKeyPath);
     }
+
+    /**
+     * 过滤字符串
+     * @param string $str
+     * @return string
+     */
+    public static function strFilter(string $str)
+    {
+        return Str::filter($str);
+    }
 }
