@@ -29,8 +29,7 @@
     "ext-redis": "*",
     "ext-libxml": "*",
     "ext-simplexml": "*",
-    "ext-mbstring": "*",
-    "ext-sodium": "*"
+    "ext-mbstring": "*"
   },
   "autoload": {
     "psr-4": {
