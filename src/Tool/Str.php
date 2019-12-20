@@ -105,7 +105,9 @@ class Str extends Tool
         $str = str_replace('ǎ', '', $str);
         $str = str_replace('ǎ', '', $str);
         $str = str_replace('〆', '', $str);
+        $str = str_replace('む', '', $str);
+        $str = str_replace('§', '', $str);
+        $str = str_replace('上门', '', $str);
         return trim($str);
     }
-
 }
