@@ -88,7 +88,7 @@ class Order extends Base
      * @param string $out_trade_no
      * @param bool $milieu
      */
-    public static function close(string $appId, string $mchId, string $subAppId, string $subMchId, string $out_trade_no, bool $milieu)
+    protected static function close(string $appId, string $mchId, string $subAppId, string $subMchId, string $out_trade_no, bool $milieu)
     {
         $params['appid'] = $appId; // 服务商的appId
         $params['mch_id'] = $mchId; //商户号
@@ -98,7 +98,7 @@ class Order extends Base
         $url = self::getUrl('closeorder', $milieu);
     }
 
-    public static function refund()
+    protected static function refund()
     {
 
     }
@@ -116,7 +116,7 @@ class Order extends Base
      * @param array $out_no 订单数据
      * @param bool $milieu 环境
      */
-    public static function refundQuery(string $appId, string $mchId, string $subAppId, string $subMchId, array $out_no, bool $milieu)
+    protected static function refundQuery(string $appId, string $mchId, string $subAppId, string $subMchId, array $out_no, bool $milieu)
     {
         $params['appid'] = $appId; // 服务商的appId
         $params['mch_id'] = $mchId; //商户号
@@ -127,5 +127,24 @@ class Order extends Base
         $params['sign'] = self::signMd5([], ''); // 签名
         $params['sign_type'] = 'MD5'; // 签名类型
         $url = self::getUrl('refundquery', $milieu); // 网址
+    }
+
+    /**
+     * 小程序调起支付API
+     * https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_sl_api.php?chapter=7_7&index=5
+     * @param string $appId
+     * @param string $package
+     * @param string $key
+     * @return mixed
+     */
+    protected static function transferPayment(string $appId, string $package, string $key)
+    {
+        $params['appId'] = $appId; // 小程序ID
+        $params['timeStamp'] = Tool::timeGetTime(); //时间戳
+        $params['nonceStr'] = self::getNonceStr(); // 随机字符串
+        $params['时间戳'] = $package; //数据包
+        $params['sign'] = self::signMd5([], $key); // 签名
+        $params['sign_type'] = 'MD5'; // 签名类型
+        return $params;
     }
 }

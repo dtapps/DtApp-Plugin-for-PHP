@@ -64,6 +64,18 @@ class WeChatMiniClient
     private static $notify_url = '';
 
     /**
+     * API密钥
+     * @var string
+     */
+    private static $apiKey = '';
+
+    /**
+     * APIv3密钥
+     * @var string
+     */
+    private static $apiV3Key = '';
+
+    /**
      * 配置
      * @param array $config
      */
@@ -73,6 +85,8 @@ class WeChatMiniClient
         if (!empty($config['mchId'])) self::$mchId = $config['mchId'];
         if (!empty($config['subAppId'])) self::$subAppId = $config['subAppId'];
         if (!empty($config['subMchId'])) self::$subMchId = $config['subMchId'];
+        if (!empty($config['apiKey'])) self::$apiKey = $config['apiKey'];
+        if (!empty($config['apiV3Key'])) self::$apiV3Key = $config['apiV3Key'];
         if (!empty($config['milieu'])) self::$milieu = $config['milieu'];
         if (!empty($config['fee_type'])) self::$fee_type = $config['fee_type'];
         if (!empty($config['trade_type'])) self::$trade_type = $config['trade_type'];
@@ -117,5 +131,16 @@ class WeChatMiniClient
     {
         if (empty($out_no)) return false;
         return Order::refundQuery(self::$appId, self::$mchId, self::$subAppId, self::$subMchId, $out_no, self::$milieu);
+    }
+
+    /**
+     * 小程序调起支付API
+     * @param array $data
+     * @return mixed
+     */
+    public static function payment(array $data)
+    {
+        if (!empty($data['appId'])) return Order::transferPayment($data['appId'], $data['package'], self::$apiKey);
+        return Order::transferPayment(self::$appId, $data['package'], self::$apiKey);
     }
 }
