@@ -102,7 +102,7 @@ class WeChatMiniClient
     public static function orderUnified(array $data)
     {
         if (empty($data) || empty(self::$notify_url)) throw new DtAppException('请检查参数');
-        return Order::unified($data, self::$appId, self::$mchId, self::$subAppId, self::$subMchId, self::$milieu);
+        return Order::unified($data, self::$appId, self::$mchId, self::$subAppId, self::$subMchId, self::$notify_url, self::$milieu);
     }
 
     /**
@@ -138,7 +138,7 @@ class WeChatMiniClient
      * @param array $data
      * @return mixed
      */
-    public static function payment(array $data)
+    public static function orderPayment(array $data)
     {
         if (!empty($data['appId'])) return Order::transferPayment($data['appId'], $data['package'], self::$apiKey);
         return Order::transferPayment(self::$appId, $data['package'], self::$apiKey);

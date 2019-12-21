@@ -26,7 +26,7 @@ class Order extends Base
      * @return string
      * @throws DtAppException
      */
-    protected static function unified(array $params, string $appId, string $mchId, string $subAppId, string $subMchId, bool $milieu)
+    protected static function unified(array $params, string $appId, string $mchId, string $subAppId, string $subMchId, string $notifyUrl, bool $milieu)
     {
         $data = [
             'appid' => $appId, // 服务商的appId
@@ -43,7 +43,7 @@ class Order extends Base
             'spbill_create_ip' => Tool::ipGet(), // 终端IP
             'time_start' => Tool::timeGetData('YmdHis'), // 交易起始时间
             'time_expire' => Tool::timeDateRear(), // 交易结束时间
-            'notify_url' => $params['notify_url'], // 通知地址
+            'notify_url' => $notifyUrl, // 通知地址
             'trade_type' => 'JSAPI', // 交易类型
             'limit_pay' => $params['limit_pay'] === false ? '' : 'no_credit', // 指定支付方式
             'openid' => $params['openid'], // 用户标识
