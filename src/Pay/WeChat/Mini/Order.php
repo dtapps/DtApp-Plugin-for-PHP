@@ -142,7 +142,7 @@ class Order extends Base
         $params['appId'] = $appId; // 小程序ID
         $params['timeStamp'] = Tool::timeGetTime(); //时间戳
         $params['nonceStr'] = self::getNonceStr(); // 随机字符串
-        $params['时间戳'] = $package; //数据包
+        $params['package'] = $package; //数据包
         $params['sign'] = self::signMd5([], $key); // 签名
         $params['sign_type'] = 'MD5'; // 签名类型
         return $params;
