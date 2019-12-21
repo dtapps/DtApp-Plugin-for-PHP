@@ -22,11 +22,13 @@ class Order extends Base
      * @param string $mchId 商户号
      * @param string $subAppId 小程序的appId
      * @param string $subMchId 子商户号
+     * @param string $notifyUrl
+     * @param string $key
      * @param bool $milieu
      * @return string
      * @throws DtAppException
      */
-    protected static function unified(array $params, string $appId, string $mchId, string $subAppId, string $subMchId, string $notifyUrl, bool $milieu)
+    protected static function unified(array $params, string $appId, string $mchId, string $subAppId, string $subMchId, string $notifyUrl, string $key, bool $milieu)
     {
         $data = [
             'appid' => $appId, // 服务商的appId
@@ -49,10 +51,10 @@ class Order extends Base
             'openid' => $params['openid'], // 用户标识
             'receipt' => $params['receipt'] === false ? '' : 'Y', // 电子发票入口开放标识
         ];
-        $data['sign'] = self::signMd5($data, ''); // 签名
+        $data['sign'] = self::signMd5($data, $key); // 签名
         $url = self::getUrl('orderquery', $milieu);
-        $xml = Tool::xmlArrayToXml($params);
-        return Tool::reqPostXmlHttp($url, $xml);
+        $xml = Tool::xmlArrayToXml($data);
+        return Tool::reqPostXmlHttp($url, Tool::urlDeCode($xml));
     }
 
     /**

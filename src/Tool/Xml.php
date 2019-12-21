@@ -24,7 +24,9 @@ class Xml extends Tool
         if (!is_array($values) || count($values) <= 0) throw new DtAppException('数组数据异常！');
         $xml = "<xml>";
         foreach ($values as $key => $val) {
-            if (is_numeric($val)) {
+            if (is_array($val)) {
+                $xml .= "<" . $key . ">" . toXml($val) . "</" . $key . ">";
+            } else if (is_numeric($val)) {
                 $xml .= "<" . $key . ">" . $val . "</" . $key . ">";
             } else {
                 $xml .= "<" . $key . "><![CDATA[" . $val . "]]></" . $key . ">";
