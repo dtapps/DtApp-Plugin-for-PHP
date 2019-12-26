@@ -22,8 +22,9 @@ class Ret extends Tool
      */
     protected static function jsonSuccess(array $data, string $msg, int $code)
     {
+        date_default_timezone_set('Asia/Shanghai');
         header('Content-Type:application/json; charset=utf-8');
-        echo json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]);
+        echo json_encode(['code' => $code, 'msg' => $msg, 'time' => time(), 'data' => $data]);
         exit;
     }
 
@@ -35,8 +36,9 @@ class Ret extends Tool
      */
     protected static function jsonError(string $msg, int $code, array $data)
     {
+        date_default_timezone_set('Asia/Shanghai');
         header('Content-Type:application/json; charset=utf-8');
-        echo json_encode(['code' => $code, 'msg' => $msg, 'data' => $data]);
+        echo json_encode(['code' => $code, 'msg' => $msg, 'time' => time(),  'data' => $data]);
         exit;
     }
 }
