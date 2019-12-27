@@ -563,4 +563,15 @@ class Tool
     {
         return Str::filter($str);
     }
+
+    /**
+     * 判断当前的时分是否在指定的时间段内
+     * @param $start
+     * @param $end
+     * @return int
+     */
+    public static function timeCheckIsBetweenTime($start, $end)
+    {
+        return (new Time())->checkIsBetweenTime($start, $end);
+    }
 }

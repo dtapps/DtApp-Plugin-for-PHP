@@ -16,3 +16,5 @@ var_dump(\DtApp\Tool\Tool::randomPN(2));
 var_dump(\DtApp\Tool\Tool::timeGetUDate());
 
 var_dump(\DtApp\Tool\Tool::strExtractBefore('52722', 0, 1));
+
+var_dump(\DtApp\Tool\Tool::timeCheckIsBetweenTime('00:00', '23:59'));

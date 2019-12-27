@@ -60,6 +60,7 @@ class Time extends Tool
      */
     protected static function getTimeDifference(string $end_time, string $start_time)
     {
+        date_default_timezone_set('Asia/Shanghai');
         $end_time = strtotime($end_time);
         $start_time = $start_time == '' ? strtotime(self::getData('Y-m-d H:i:s')) : strtotime($start_time);
         return $end_time - $start_time;
@@ -72,6 +73,7 @@ class Time extends Tool
      */
     protected static function dateToTimestamp(string $date)
     {
+        date_default_timezone_set('Asia/Shanghai');
         return strtotime($date);
     }
 
@@ -83,6 +85,7 @@ class Time extends Tool
      */
     protected static function dateRear(string $format = "Y-m-d H:i:s", int $mun = 10)
     {
+        date_default_timezone_set('Asia/Shanghai');
         return date($format, strtotime(self::getData()) + $mun);
     }
 
@@ -94,6 +97,25 @@ class Time extends Tool
      */
     protected static function dateBefore(string $format = "Y-m-d H:i:s", int $mun = 10)
     {
+        date_default_timezone_set('Asia/Shanghai');
         return date($format, strtotime(self::getData()) - $mun);
+    }
+
+    /**
+     * 判断当前的时分是否在指定的时间段内
+     * @param $start
+     * @param $end
+     * @return int   1：在范围内，0:没在范围内
+     */
+    protected static function checkIsBetweenTime($start, $end)
+    {
+        date_default_timezone_set('Asia/Shanghai');
+        $date = date('H:i');
+        $curTime = strtotime($date);//当前时分
+        $assignTime1 = strtotime($start);//获得指定分钟时间戳，00:00
+        $assignTime2 = strtotime($end);//获得指定分钟时间戳，01:00
+        $result = 0;
+        if ($curTime > $assignTime1 && $curTime < $assignTime2) $result = 1;
+        return $result;
     }
 }
