@@ -68,7 +68,11 @@ class Tool
      */
     public static function ipGet()
     {
-        return Ip::get();
+        try {
+            return Ip::get();
+        } catch (\Exception $e) {
+            return '127.0.0.1';
+        }
     }
 
     /**
