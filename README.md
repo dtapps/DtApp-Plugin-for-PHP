@@ -1,4 +1,4 @@
-<img align="right" width="100" src="https://aliyun.oss.dtapp.net/public/hao/images/ico.png" alt="EasyWeChat Logo"/>
+<img align="right" width="100" src="https://aliyun.oss.dtapp.net/public/hao/images/ico.png" alt="dtApp Logo"/>
 
 <h1 align="left"><a href="https://www.dtapp.net/">DtApp</a></h1>
 
@@ -19,17 +19,17 @@
 ## 安装
 
 ```text
-composer require liguangchun/dtapp
+composer require liguangchun/dtapp -vvv
 ```
 
 ## 更新
 
 ```text
-composer update liguangchun/dtapp
+composer update liguangchun/dtapp -vvv
 ```
 
 ## 删除
 
 ```text
-composer remove liguangchun/dtapp
+composer remove liguangchun/dtapp -vvv
 ```
