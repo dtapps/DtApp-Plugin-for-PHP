@@ -43,7 +43,7 @@ class Tool
     }
 
     /**
-     * 数组随机返回一个
+     * 数组随机返回一个下标
      * @param $array
      * @return mixed
      */
@@ -577,5 +577,15 @@ class Tool
     public static function timeCheckIsBetweenTime($start, $end)
     {
         return (new Time())->checkIsBetweenTime($start, $end);
+    }
+
+    /**
+     * 数组随机返回一个值
+     * @param $array
+     * @return mixed
+     */
+    public static function arrayRandValue(array $array)
+    {
+        return Arrays::randValue($array);
     }
 }
