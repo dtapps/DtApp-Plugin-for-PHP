@@ -588,4 +588,16 @@ class Tool
     {
         return Arrays::randValue($array);
     }
+
+    /**
+     * 判断字符串是否包含某个字符
+     * @param $str
+     * @param int $nee
+     * @param string $del
+     * @return bool
+     */
+    public static function strExitContain($str, $nee = 3, $del = ',')
+    {
+        return Str::exitContain($str, $nee, $del);
+    }
 }

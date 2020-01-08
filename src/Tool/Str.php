@@ -110,4 +110,25 @@ class Str extends Tool
         $str = str_replace('上门', '', $str);
         return trim($str);
     }
+
+    /**
+     * 判断字符串是否包含某个字符
+     * @param $str
+     * @param int $nee
+     * @param string $del
+     * @return bool
+     */
+    public static function exitContain($str, $nee = 3, $del = ',')
+    {
+        if (strpos($str, $del) !== false) {
+            $var = explode($del, $str);
+            foreach ($var as $v) {
+                if ($v == $nee) return true;
+            }
+            return false;
+        } else {
+            if ($str == $nee) return true;
+            return false;
+        }
+    }
 }
